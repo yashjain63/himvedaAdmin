@@ -1,7 +1,8 @@
 import React from 'react'
-import Header from './components/Header'
-import SideBar from './components/SideBar'
-import Footer from './components/Footer'
+import Header from './components/sections/Header'
+import SideBar from './components/sections/SideBar'
+import Footer from './components/sections/Footer'
+
 const App = () => {
   return (
     <div>
