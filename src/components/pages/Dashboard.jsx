@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   PieChart,
   Pie,
@@ -24,13 +24,15 @@ const statsSparklines = [
 ];
 
 const salesData = [
-  { name: "Men Fashion", value: 400 },
-  { name: "Women Fashion", value: 300 },
-  { name: "Sports", value: 300 },
-  { name: "Accessories", value: 200 },
-  { name: "Underwear", value: 150 },
+  { name: "Foundation", value: 400 },
+  { name: "Face", value: 300 },
+  { name: "Body", value: 300 },
+  { name: "Hair Care", value: 200 },
+  { name: "Herbal", value: 150 },
+  { name: "Our Combos", value: 100 },
+
 ];
-const COLORS = ["#4F46E5", "#3B82F6", "#06B6D4", "#22C55E", "#F59E0B"];
+const COLORS = ["#4F46E5", "#3B82F6", "#06B6D4", "#22C55E", "#F59E0B", "#75332b"];
 
 const earningsData = [
   { month: "Jan", revenue: 37000, profit: 28000 },
@@ -43,9 +45,13 @@ const earningsData = [
   { month: "Aug", revenue: 30000, profit: 24000 },
 ];
 
+
+
+
+
 const orders = [
   {
-    img: "https://via.placeholder.com/40",
+    img: "/images/protct1.png",
     product: "Taste of the Wild Formula Finder",
     customer: "2,672",
     id: "28,672.36",
@@ -54,7 +60,7 @@ const orders = [
     status: "Delivered",
   },
   {
-    img: "https://via.placeholder.com/40",
+    img: "/images/protct2.png",
     product: "Proden PlaqueOff Dental Bites Dog, 150 G",
     customer: "2,672",
     id: "28,672.36",
@@ -63,7 +69,7 @@ const orders = [
     status: "Delivered",
   },
   {
-    img: "https://via.placeholder.com/40",
+    img: "/images/protct3.png",
     product: "Zuke's Lil' Links Healthy Little Sausage Links for Dogs",
     customer: "2,672",
     id: "28,672.36",
@@ -72,7 +78,7 @@ const orders = [
     status: "Delivered",
   },
   {
-    img: "https://via.placeholder.com/40",
+    img: "/images/protct4.png",
     product: "Rachael Ray Nutrish Grain Free Chicken Drumstick",
     customer: "2,672",
     id: "28,672.36",
@@ -81,7 +87,7 @@ const orders = [
     status: "Delivered",
   },
   {
-    img: "https://via.placeholder.com/40",
+    img: "/images/protct1.png",
     product: "Fruitables Dog Treats Sweet Potato & Pecan Flavor",
     customer: "2,672",
     id: "28,672.36",
@@ -89,14 +95,75 @@ const orders = [
     price: "₹28,672.36",
     status: "Delivered",
   },
+  {
+    img: "/images/protct2.png",
+    product: "Proden PlaqueOff Dental Bites Dog, 150 G",
+    customer: "2,672",
+    id: "28,672.36",
+    qty: "X2",
+    price: "₹28,672.36",
+    status: "Delivered",
+  },
+  {
+    img: "/images/protct3.png",
+    product: "Zuke's Lil' Links Healthy Little Sausage Links for Dogs",
+    customer: "2,672",
+    id: "28,672.36",
+    qty: "X1",
+    price: "₹28,672.36",
+    status: "Delivered",
+  },
+  {
+    img: "/images/protct4.png",
+    product: "Rachael Ray Nutrish Grain Free Chicken Drumstick",
+    customer: "2,672",
+    id: "28,672.36",
+    qty: "X3",
+    price: "₹28,672.36",
+    status: "Delivered",
+  },
+  {
+    img: "/images/protct1.png",
+    product: "Fruitables Dog Treats Sweet Potato & Pecan Flavor",
+    customer: "2,672",
+    id: "28,672.36",
+    qty: "X2",
+    price: "₹28,672.36",
+    status: "Delivered",
+  },
+  {
+    img: "/images/protct2.png",
+    product: "Taste of the Wild Formula Finder",
+    customer: "2,672",
+    id: "28,672.36",
+    qty: "X1",
+    price: "₹28,672.36",
+    status: "Delivered",
+  },
 ];
 
 const topProducts = [
-  { name: "Prodotti per i tuo cane…", review: "4.7", sold: "120", price: "₹16.96" },
-  { name: "Wholesome Pride…", review: "4.7", sold: "120", price: "₹16.96" },
-  { name: "Beneful Baked Delights…", review: "4.7", sold: "120", price: "₹16.96" },
-  { name: "Taste of the Wild…", review: "4.7", sold: "120", price: "₹16.96" },
-  { name: "Canagan - Britain's…", review: "4.7", sold: "120", price: "₹16.96" },
+  {img:"/images/protct1.png", name: "AyuLeaf Cream", sold: "120", price: "₹16.96" },
+  {img:"/images/protct2.png", name: "Kumkumadi Radiance", sold: "120", price: "₹16.96" },
+  {img:"/images/protct3.png", name: "ChandanSilk", sold: "120", price: "₹16.96" },
+  {img:"/images/protct4.png", name: "BhringaRoot", sold: "120", price: "₹16.96" },
+  {img:"/images/protct1.png", name: "Keshamrit", sold: "120", price: "₹16.96" },
+];
+
+const topCustomers = [
+  {img:"/images/member.jpg", name: "Dinesh Rajpur", sold: "120", price: "₹16.96" },
+  {img:"/images/member2.jpg", name: "Priya Singh", sold: "120", price: "₹16.96" },
+  {img:"/images/member3.jpg", name: "Suresh Pathak", sold: "120", price: "₹16.96" },
+  {img:"/images/member.jpg", name: "Anshul Khanna", sold: "120", price: "₹16.96" },
+  {img:"/images/member2.jpg", name: "Shivani Bishnoi", sold: "120", price: "₹16.96" },
+];
+
+const productOverview = [
+  {img:"/images/protct4.png", name: "Baby Oil", sold: "120", price: "₹16.96" },
+  {img:"/images/protct2.png", name: "Face Wash", sold: "120", price: "₹16.96" },
+  {img:"/images/protct1.png", name: "Herbal Shampoo", sold: "120", price: "₹16.96" },
+  {img:"/images/protct4.png", name: "Body Lotion", sold: "120", price: "₹16.96" },
+  {img:"/images/protct3.png", name: "Sundarya Glow", sold: "120", price: "₹16.96" },
 ];
 
 const earningsDonut = [
@@ -120,14 +187,20 @@ const visitorsData = [
 
 // ---------- Component ----------
 const Dashboard = () => {
+
+  // for recent orders pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const ordersPerPage = 5;
+
+  const startIndex = (currentPage - 1) * ordersPerPage;
+  const paginatedOrders = orders.slice(startIndex, startIndex + ordersPerPage);
+  const totalPages = Math.ceil(orders.length / ordersPerPage);
+
   return (
     <div className="p-6 bg-gray-50 min-h-screen space-y-6">
       {/* Header */}
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-semibold">Dashboard</h1>
-        <nav className="text-sm text-gray-500">
-          Dashboard &gt; Favourites &gt; <span className="text-gray-700 font-medium">Title</span>
-        </nav>
       </div>
 
       {/* Top Stats Row */}
@@ -143,17 +216,33 @@ const Dashboard = () => {
         {/* Donut */}
         <div className="bg-white shadow-sm rounded-xl p-6">
           <h2 className="text-lg font-semibold mb-2">Sale by category</h2>
-          <p className="text-sm text-gray-500">Total Mar 20, 2023</p>
+          <p className="text-sm text-gray-500">Total by Sept 20, 2025</p>
           <p className="text-xl font-semibold">₹37,802</p>
           <ResponsiveContainer width="100%" height={220}>
             <PieChart>
-              <Pie data={salesData} dataKey="value" innerRadius={60} outerRadius={90}>
+              <Pie
+                data={salesData}
+                dataKey="value"
+                innerRadius={60}
+                outerRadius={90}
+              >
                 {salesData.map((entry, i) => (
                   <Cell key={i} fill={COLORS[i % COLORS.length]} />
                 ))}
               </Pie>
+
+              {/* Custom tooltip with no border */}
+              <Tooltip
+                contentStyle={{
+                  border: "none",
+                  boxShadow: "none",
+                  backgroundColor: "transparent",
+                }}
+                formatter={(value, name) => [`₹${value}`, name]}
+              />
             </PieChart>
           </ResponsiveContainer>
+
           <div className="flex justify-around text-xs text-gray-600 mt-2 flex-wrap">
             {salesData.map((d, i) => (
               <span key={i}>{d.name}</span>
@@ -166,7 +255,7 @@ const Dashboard = () => {
           {/* Header */}
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold">Earnings</h2>
-            <button className="text-gray-400">•••</button>
+            {/* <button className="text-gray-400">•••</button> */}
           </div>
 
           {/* Revenue Row */}
@@ -237,6 +326,7 @@ const Dashboard = () => {
       </div>
 
       {/* Recent Orders */}
+      {/* Recent Orders Section */}
       <div className="bg-white shadow-sm rounded-xl p-6">
         <h2 className="text-lg font-semibold mb-4">Recent orders</h2>
         <div className="overflow-x-auto">
@@ -252,7 +342,7 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {orders.map((order, i) => (
+              {paginatedOrders.map((order, i) => (
                 <tr
                   key={i}
                   className="bg-white even:bg-gray-50 hover:bg-gray-100 transition"
@@ -272,7 +362,15 @@ const Dashboard = () => {
                   <td className="px-4 py-3">{order.qty}</td>
                   <td className="px-4 py-3 font-medium">{order.price}</td>
                   <td className="px-4 py-3">
-                    <span className="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-medium">
+                    <span
+                      className={`px-2 py-1 rounded-full text-xs font-medium
+                        ${order.status === "Completed"
+                          ? "bg-green-100 text-green-700"
+                          : order.status === "Pending"
+                            ? "bg-yellow-100 text-yellow-700"
+                            : "bg-red-100 text-red-700"
+                        }`}
+                    >
                       {order.status}
                     </span>
                   </td>
@@ -284,17 +382,21 @@ const Dashboard = () => {
 
         {/* Pagination */}
         <div className="flex justify-end mt-4 space-x-2">
-          {[1, 2, 3].map((num) => (
-            <button
-              key={num}
-              className={`px-3 py-1 rounded-full ₹{num === 1
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                }`}
-            >
-              {num}
-            </button>
-          ))}
+          {[...Array(totalPages)].map((_, i) => {
+            const page = i + 1;
+            return (
+              <button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`px-3 py-1 rounded-full ${currentPage === page
+                    ? "bg-red-900 text-white"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  }`}
+              >
+                {page}
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -304,19 +406,29 @@ const Dashboard = () => {
         <div className="bg-white shadow-sm rounded-xl p-6">
           <h2 className="text-lg font-semibold mb-4">Top product</h2>
           <table className="w-full text-sm text-left">
-            <thead className="bg-gray-100 text-gray-600">
+            <thead className="">
               <tr>
                 <th className="px-2 py-2">Product</th>
-                <th className="px-2 py-2">Review</th>
+                {/* <th className="px-2 py-2">Review</th> */}
                 <th className="px-2 py-2">Sold</th>
-                <th className="px-2 py-2">Profit</th>
+                <th className="px-2 py-2">Price</th>
               </tr>
             </thead>
             <tbody>
               {topProducts.map((p, i) => (
                 <tr key={i} className="border-b hover:bg-gray-50">
-                  <td className="px-2 py-2">{p.name}</td>
-                  <td className="px-2 py-2">{p.review}⭐</td>
+                  <td className="pr-4 py-3 flex items-center gap-3">
+                    <img
+                      src={p.img}
+                      alt="product"
+                      className="w-10 h-10 rounded-lg object-cover border"
+                    />
+                    <span>
+                      {p.name}
+                    </span>
+                  </td>
+                  {/* <td className="px-2 py-2">{p.name}</td> */}
+                  {/* <td className="px-2 py-2">{p.review}⭐</td> */}
                   <td className="px-2 py-2">{p.sold}</td>
                   <td className="px-2 py-2">{p.price}</td>
                 </tr>
@@ -325,42 +437,81 @@ const Dashboard = () => {
           </table>
         </div>
 
-        {/* Earnings Donut */}
+        {/* Top Customers */}
         <div className="bg-white shadow-sm rounded-xl p-6">
-          <h2 className="text-lg font-semibold mb-4">Earnings</h2>
-          <ResponsiveContainer width="100%" height={200}>
-            <PieChart>
-              <Pie data={earningsDonut} dataKey="value" innerRadius={60} outerRadius={90}>
-                {earningsDonut.map((_, i) => (
-                  <Cell key={i} fill={DONUT_COLORS[i]} />
-                ))}
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
-          <div className="flex justify-around text-sm text-gray-600 mt-3">
-            <span>Revenue: ₹37,802</span>
-            <span>Profit: ₹28,305</span>
-          </div>
+          <h2 className="text-lg font-semibold mb-4">Top Customers </h2>
+          <table className="w-full text-sm text-left">
+            <thead className="">
+              <tr>
+                <th className="px-2 py-2">Product</th>
+                {/* <th className="px-2 py-2">Review</th> */}
+                <th className="px-2 py-2">Sold</th>
+                <th className="px-2 py-2">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {topCustomers.map((c, i) => (
+                <tr key={i} className="border-b hover:bg-gray-50">
+                  <td className="pr-4 py-3 flex items-center gap-3">
+                    <img
+                      src={c.img}
+                      alt="product"
+                      className="w-10 h-10 rounded-lg object-cover border"
+                    />
+                    <span>
+                      {c.name}
+                    </span>
+                  </td>
+                  {/* <td className="px-2 py-2">{p.name}</td> */}
+                  {/* <td className="px-2 py-2">{p.review}⭐</td> */}
+                  <td className="px-2 py-2">{c.sold}</td>
+                  <td className="px-2 py-2">{c.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
 
-        {/* Visitors */}
+        {/* Product Overview */}
         <div className="bg-white shadow-sm rounded-xl p-6">
-          <h2 className="text-lg font-semibold mb-4">Website visitors</h2>
-          <ResponsiveContainer width="100%" height={200}>
-            <BarChart data={visitorsData}>
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="visitors" fill="#6366F1" />
-            </BarChart>
-          </ResponsiveContainer>
+          <h2 className="text-lg font-semibold mb-4 flex justify-between ">Product Overview <span className="text-sm cursor-pointer hover:text-red-700">View All</span></h2>
+          <table className="w-full text-sm text-left">
+            <thead className="">
+              <tr>
+                <th className="px-2 py-2">Product</th>
+                {/* <th className="px-2 py-2">Review</th> */}
+                <th className="px-2 py-2">Sold</th>
+                <th className="px-2 py-2">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {productOverview.map((p, i) => (
+                <tr key={i} className="border-b hover:bg-gray-50">
+                  <td className="pr-4 py-3 flex items-center gap-3">
+                    <img
+                      src={p.img}
+                      alt="product"
+                      className="w-10 h-10 rounded-lg object-cover border"
+                    />
+                    <span>
+                      {p.name}
+                    </span>
+                  </td>
+                  {/* <td className="px-2 py-2">{p.name}</td> */}
+                  {/* <td className="px-2 py-2">{p.review}⭐</td> */}
+                  <td className="px-2 py-2">{p.sold}</td>
+                  <td className="px-2 py-2">{p.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="text-center text-xs text-gray-500 mt-6">
-        Copyright © 2025 Remos. Design with ❤️ by Themesflat. All rights reserved.
-      </footer>
+      {/* <footer className="text-center text-xs text-gray-500 mt-6">
+        © 2025 Himvedaa. All rights reserved.
+      </footer> */}
     </div>
   );
 };
@@ -372,11 +523,11 @@ const StatsCard = ({ title, value, percentage, icon: Icon, color, sparkline }) =
       {/* Top Section */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className={`p-3 rounded-lg bg-opacity-20 ₹{color}`}>
-            <Icon className={`w-5 h-5 ₹{color.replace("text-", "text-")}`} />
+          <div className={`p-3 rounded-lg bg-opacity-20 ${color}`}>
+            <Icon className={`w-5 h-5 ${color}`} />
           </div>
           <div>
-            <p className="text-gray-500 text-sm">{title}</p>
+            <p className="text-gray-600 font-semibold text-lg">{title}</p>
             <h2 className="text-2xl font-bold">{value}</h2>
           </div>
         </div>
@@ -388,6 +539,7 @@ const StatsCard = ({ title, value, percentage, icon: Icon, color, sparkline }) =
           {percentage}%
         </div>
       </div>
+
 
       {/* Chart Section */}
       <div className="h-16 mt-4">
