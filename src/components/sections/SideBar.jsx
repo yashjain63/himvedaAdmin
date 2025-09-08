@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   FaHome,
   FaBoxOpen,
@@ -10,7 +10,7 @@ import {
   FaLayerGroup,
   FaTags,
 } from "react-icons/fa";
-import { CircleUserRound, PanelRightClose, X, Shirt, ShoppingBag, LayoutDashboard, Layers2, Archive, UserRound, Settings, Package, BadgeDollarSign, ReceiptText, HandHelping, Home, MessageCircleQuestionMark } from "lucide-react";
+import { CircleUserRound, PanelRightClose, X, ShoppingBag, Layers2, Archive, UserRound, Settings, Package, BadgeDollarSign, ReceiptText, Home, MessageCircleQuestionMark, Bell, MessageSquare } from "lucide-react";
 import { HiMenu } from "react-icons/hi";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { BsGrid3X3Gap } from "react-icons/bs";
@@ -19,8 +19,6 @@ import { AiOutlineFullscreen } from "react-icons/ai";
 import { BiMessageDetail } from "react-icons/bi";
 // import whitelogo from "/images/white-logo.png";
 
-// logo
-import Logo from "/images/logo.png";
 
 const SidebarLayout = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -42,8 +40,8 @@ const SidebarLayout = () => {
 
   // Sidebar menus
   const menus = [
-    { name: "Dashboard", icon: <Home /> },
-    { name: "Products", icon: <ShoppingBag />, children: ["Product List", "Add Product", "Product Detail", "Edit Product"] },
+    { name: "Dashboard", icon: <Home strokeWidth={1} /> },
+    { name: "Products", icon: <ShoppingBag strokeWidth={1} />, children: ["Product List", "Add Product", "Product Detail", "Edit Product"] },
     // {
     //   name: "Ecommerce",
     //   icon: <FaShoppingCart />,
@@ -55,14 +53,14 @@ const SidebarLayout = () => {
     //     "Product Detail 3",
     //   ],
     // },
-    { name: "Category", icon: <Layers2 />, children: ["Add Category", "Category List"] },
-    { name: "Inventory", icon: <Package />, children: ["Warehouse List", "Received Order List"] },
-    { name: "Orders", icon: <Archive />, children: ["Order List", "Order Detail", "Order Tracking", "Returning Orders List"] },
-    { name: "Transactions", icon: <BadgeDollarSign />, children: ["Mode"] },
-    { name: "Invoice", icon: <ReceiptText />, children: ["Invoice List", "Invoice Detail", "Create Invoice"] },
-    { name: "Users", icon: <UserRound />, children: ["User List", "User Roles", "User Permissions"] },
-    { name: "Settings", icon: <Settings />, children: ["General Settings", "Profile Settings", "Security"] },
-    { name: "Support", icon: <MessageCircleQuestionMark />, children: ["Help Centre", "FAQ's"] },
+    { name: "Category", icon: <Layers2 strokeWidth={1} />, children: ["Add Category", "Category List"] },
+    { name: "Inventory", icon: <Package strokeWidth={1} />, children: ["Warehouse List", "Received Order List"] },
+    { name: "Orders", icon: <Archive strokeWidth={1} />, children: ["Order List", "Order Detail", "Order Tracking", "Returning Orders List"] },
+    { name: "Transactions", icon: <BadgeDollarSign strokeWidth={1} />, children: ["Mode"] },
+    { name: "Invoice", icon: <ReceiptText strokeWidth={1} />, children: ["Invoice List", "Invoice Detail", "Create Invoice"] },
+    { name: "Users", icon: <UserRound strokeWidth={1} />, children: ["User List", "User Roles", "User Permissions"] },
+    { name: "Settings", icon: <Settings strokeWidth={1} />, children: ["General Settings", "Profile Settings", "Security"] },
+    { name: "Support", icon: <MessageCircleQuestionMark strokeWidth={1} />, children: ["Help Centre", "FAQ's"] },
   ];
 
   // Toggle parent menu
@@ -92,6 +90,99 @@ const SidebarLayout = () => {
     setIsOpen(false);
     setExpandedMenu(null);
   };
+
+  // for notification bell
+  const notifications = [
+    {
+      id: 1,
+      title: "Discount available",
+      text: "Morbi sapien massa, ultricies at rhoncus at, ullamcorper nec diam",
+      color: "bg-blue-100 text-blue-600",
+      icon: "🏷️",
+    },
+    {
+      id: 2,
+      title: "Account has been verified",
+      text: "Mauris libero ex, iaculis vitae rhoncus et",
+      color: "bg-purple-100 text-purple-600",
+      icon: "👤",
+    },
+    {
+      id: 3,
+      title: "Order shipped successfully",
+      text: "Integer aliquam eros nec sollicitudin sollicitudin",
+      color: "bg-green-100 text-green-600",
+      icon: "📦",
+    },
+    {
+      id: 4,
+      title: "Order pending: ID 305830",
+      text: "Ultricies at rhoncus at ullamcorper",
+      color: "bg-red-100 text-red-600",
+      icon: "🚚",
+    },
+  ];
+
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown if clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsNotificationOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // for message button
+  const messages = [
+    {
+      id: 1,
+      name: "Cameron Williamson",
+      text: "Hello?",
+      time: "10:13 PM",
+      img: "https://randomuser.me/api/portraits/men/32.jpg",
+    },
+    {
+      id: 2,
+      name: "Ralph Edwards",
+      text: "Are you there? interested i this...",
+      time: "10:13 PM",
+      img: "https://randomuser.me/api/portraits/women/44.jpg",
+    },
+    {
+      id: 3,
+      name: "Eleanor Pena",
+      text: "Interested in this loads?",
+      time: "10:13 PM",
+      img: "https://randomuser.me/api/portraits/men/55.jpg",
+    },
+    {
+      id: 4,
+      name: "Jane Cooper",
+      text: "Okay...Do we have a deal?",
+      time: "10:13 PM",
+      img: "https://randomuser.me/api/portraits/women/65.jpg",
+    },
+  ];
+
+  const [open, setOpen] = useState(false);
+  const dropdownnRef = useRef(null);
+
+  // Close dropdown if clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownnRef.current && !dropdownnRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
 
   return (
     <div className="h-screen bg-gray-50">
@@ -128,6 +219,7 @@ const SidebarLayout = () => {
           >
             <PanelRightClose
               className={`transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`}
+              strokeWidth={1}
             />
           </button>
 
@@ -151,7 +243,7 @@ const SidebarLayout = () => {
               <li key={menu.name}>
                 <button
                   onClick={() => handleMenuClick(menu)}
-                  className={` group w-full rounded-lg text-white/90 hover:text-white transition-colors flex items-center
+                  className={` group w-full rounded-lg text-white hover:text-white transition-colors flex items-center
                     ${expanded ? "bg-green-600" : "hover:bg-green-600/70"}
                     ${isOpen ? "justify-between px-3 py-2" : "justify-center pl-7 p-4"}
                   `}
@@ -231,18 +323,123 @@ const SidebarLayout = () => {
             )}
 
             {/* <MdOutlineDarkMode className="text-gray-600 text-xl cursor-pointer" /> */}
-            <FaBell className="text-gray-600 text-xl cursor-pointer" />
-            <BiMessageDetail className="text-gray-600 w-6 h-6.5 cursor-pointer" />
+
+            {/* <Bell className="text-gray-600 text-xl cursor-pointer" strokeWidth={1} /> */}
+            <div className="relative" ref={dropdownRef}>
+              {/* Notification bell */}
+              <button
+                onClick={() => setIsNotificationOpen(!isNotificationOpen)}
+                className="relative p-2 rounded-full hover:bg-gray-100"
+              >
+                <Bell className="text-gray-600 text-xl cursor-pointer" strokeWidth={1} />
+                <span className="absolute top-1 right-1 bg-green-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                  1
+                </span>
+              </button>
+
+              {/* Dropdown */}
+              {isNotificationOpen && (
+                <div className="absolute right-0 mt-5 w-80 bg-white shadow-lg rounded-2xl overflow-hidden z-50">
+                  <div className="p-4 border-b border-gray-200">
+                    <h3 className="text-lg font-semibold">Notifications</h3>
+                  </div>
+
+                  <div className="max-h-72 overflow-y-auto">
+                    {notifications.map((item) => (
+                      <div
+                        key={item.id}
+                        className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition"
+                      >
+                        {/* Icon */}
+                        <div
+                          className={`flex items-center justify-center w-10 h-10 rounded-full ${item.color}`}
+                        >
+                          <span className="text-lg">{item.icon}</span>
+                        </div>
+
+                        {/* Text */}
+                        <div className="flex-1">
+                          <p className="font-semibold text-gray-800 text-sm">
+                            {item.title}
+                          </p>
+                          <p className="text-xs text-gray-500">{item.text}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="p-3 border-t border-gray-200">
+                    <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-medium transition">
+                      View all
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+
+            {/* <MessageSquare className="text-gray-600 w-5.5 h-5.5 cursor-pointer" strokeWidth={1} /> */}
+            <div className="relative" ref={dropdownnRef}>
+              {/* Message button */}
+              <button
+                onClick={() => setOpen(!open)}
+                className="relative p-2 rounded-full hover:bg-gray-100"
+              >
+                <MessageSquare className="text-gray-600 w-5.5 h-5.5 cursor-pointer" strokeWidth={1} />
+                <span className="absolute top-1 right-1 bg-green-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                  1
+                </span>
+              </button>
+
+              {/* Dropdown */}
+              {open && (
+                <div className="absolute right-0 mt-3 w-80 bg-white shadow-lg rounded-2xl overflow-hidden z-50">
+                  <div className="p-4 border-b border-gray-200">
+                    <h3 className="text-lg font-semibold">Message</h3>
+                  </div>
+
+                  <div className="max-h-72 overflow-y-auto">
+                    {messages.map((msg) => (
+                      <div
+                        key={msg.id}
+                        className="flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition"
+                      >
+                        <div className="flex items-center gap-3">
+                          <img
+                            src={msg.img}
+                            alt={msg.name}
+                            className="w-10 h-10 rounded-full object-cover"
+                          />
+                          <div>
+                            <p className="font-semibold text-gray-800">{msg.name}</p>
+                            <p className="text-sm text-gray-500 truncate w-40">
+                              {msg.text}
+                            </p>
+                          </div>
+                        </div>
+                        <span className="text-xs text-gray-400">{msg.time}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="p-3 border-t border-gray-200">
+                    <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-medium transition">
+                      View all
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
             {/* <AiOutlineFullscreen className="text-gray-600 text-xl cursor-pointer" /> */}
             {/* <BsGrid3X3Gap className="text-gray-600 text-xl cursor-pointer" /> */}
             <div className="flex items-center gap-2 cursor-pointer">
-              <CircleUserRound className="w-5.5 h-5.5 text-gray-600" />
+              <CircleUserRound className="w-6 h-6 text-gray-600" strokeWidth={1} />
               <div className="hidden md:flex flex-col leading-tight">
                 <span className="font-medium text-sm text-gray-700">Kristin Watson</span>
                 <span className="text-xs text-gray-500">Admin</span>
               </div>
             </div>
-            <FaCog className="text-gray-600 text-xl cursor-pointer" />
+            <Settings className="text-gray-600 text-xl w-6 h-6 cursor-pointer" strokeWidth={1} />
           </div>
         </header>
 
