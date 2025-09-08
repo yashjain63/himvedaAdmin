@@ -4,6 +4,7 @@ import SideBar from './components/sections/SideBar'
 import Footer from './components/sections/Footer'
 import Dashboard from './components/pages/Dashboard'
 import ProductList from './components/pages/ProductList'
+import AddProduct from './components/pages/AddProduct'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <SideBar />
       {/* <Dashboard /> */}
       {/* <ProductList/> */}
+      {/* <AddProduct/> */}
       <Footer />
     </div>
   )
