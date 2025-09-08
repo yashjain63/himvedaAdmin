@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import Dashboard from "../pages/Dashboard";
 import {
   FaHome,
   FaBoxOpen,
@@ -22,7 +23,7 @@ import { BiMessageDetail } from "react-icons/bi";
 
 const SidebarLayout = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [activeMenu, setActiveMenu] = useState("Dashboard");
+  const [activeMenu, setActiveMenu] = useState(<Dashboard />);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [expandedMenu, setExpandedMenu] = useState(null);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -42,17 +43,6 @@ const SidebarLayout = () => {
   const menus = [
     { name: "Dashboard", icon: <Home strokeWidth={1} /> },
     { name: "Products", icon: <ShoppingBag strokeWidth={1} />, children: ["Product List", "Add Product", "Product Detail", "Edit Product"] },
-    // {
-    //   name: "Ecommerce",
-    //   icon: <FaShoppingCart />,
-    //   children: [
-    //     "Add Product",
-    //     "Product List",
-    //     "Product Detail 1",
-    //     "Product Detail 2",
-    //     "Product Detail 3",
-    //   ],
-    // },
     { name: "Category", icon: <Layers2 strokeWidth={1} />, children: ["Add Category", "Category List"] },
     { name: "Inventory", icon: <Package strokeWidth={1} />, children: ["Warehouse List", "Received Order List"] },
     { name: "Orders", icon: <Archive strokeWidth={1} />, children: ["Order List", "Order Detail", "Order Tracking", "Returning Orders List"] },
@@ -66,7 +56,7 @@ const SidebarLayout = () => {
   // Toggle parent menu
   const handleMenuClick = (menu) => {
     if (!menu.children) {
-      setActiveMenu(menu.name);
+      setActiveMenu(<Dashboard/> );
       setExpandedMenu(null);
       if (isMobile) setIsOpen(false);
     } else {
@@ -393,7 +383,7 @@ const SidebarLayout = () => {
 
               {/* Dropdown */}
               {open && (
-                <div className="absolute right-0 mt-3 w-80 bg-white shadow-lg rounded-2xl overflow-hidden z-50">
+                <div className="absolute right-0 mt-5 w-80 bg-white shadow-lg rounded-2xl overflow-hidden z-50">
                   <div className="p-4 border-b border-gray-200">
                     <h3 className="text-lg font-semibold">Message</h3>
                   </div>
@@ -466,7 +456,8 @@ const SidebarLayout = () => {
 
         <main className="p-4 md:p-6">
           <h2 className="text-2xl font-semibold">{activeMenu}</h2>
-          <p className="mt-2 text-gray-600">Welcome to the Himveda Admin Panel.</p>
+          {/* <Dashboard/> */}
+          {/* <p className="mt-2 text-gray-600">Welcome to the Himveda Admin Panel.</p> */}
         </main>
       </div>
     </div>
