@@ -13,7 +13,7 @@ const App = () => {
       <SideBar />
       {/* <Dashboard /> */}
       {/* <ProductList/> */}
-      {/* <AddProduct/> */}
+      <AddProduct />
       <Footer />
     </div>
   )

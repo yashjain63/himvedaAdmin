@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Upload, Calendar } from "lucide-react";
 
-export default function AddProductPage() {
+export default function AddProduct() {
   const [productName, setProductName] = useState("");
   const [category, setCategory] = useState("");
   const [gender, setGender] = useState("Male");
@@ -215,7 +215,7 @@ export default function AddProductPage() {
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="w-full border rounded-lg px-3 py-2 text-sm outline-none"
+                  className="w-full border rounded-lg px-3 py-2 text-sm "
                 />
                 <Calendar className="w-5 h-5 text-gray-400 absolute right-3 top-2.5" />
               </div>

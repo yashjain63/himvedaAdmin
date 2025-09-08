@@ -18,12 +18,14 @@ import { BsGrid3X3Gap } from "react-icons/bs";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { AiOutlineFullscreen } from "react-icons/ai";
 import { BiMessageDetail } from "react-icons/bi";
+import ProductListPage from "../pages/ProductList";
+import ProductList from "../pages/ProductList";
 // import whitelogo from "/images/white-logo.png";
 
 
 const SidebarLayout = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [activeMenu, setActiveMenu] = useState(<Dashboard />);
+  const [activeMenu, setActiveMenu] = useState(<ProductList />);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [expandedMenu, setExpandedMenu] = useState(null);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -56,7 +58,7 @@ const SidebarLayout = () => {
   // Toggle parent menu
   const handleMenuClick = (menu) => {
     if (!menu.children) {
-      setActiveMenu(<Dashboard/> );
+      setActiveMenu(<ProductList/> );
       setExpandedMenu(null);
       if (isMobile) setIsOpen(false);
     } else {
