@@ -10,7 +10,7 @@ import {
   FaLayerGroup,
   FaTags,
 } from "react-icons/fa";
-import { CircleUserRound, PanelRightClose, X, Shirt, ShoppingBag, LayoutDashboard, Layers2, Archive, UserRound, Settings, Package, BadgeDollarSign, ReceiptText, HandHelping, Home, MessageCircleQuestionMark } from "lucide-react";
+import { CircleUserRound, PanelRightClose, X, ShoppingBag, Layers2, Archive, UserRound, Settings, Package, BadgeDollarSign, ReceiptText, Home, MessageCircleQuestionMark, Bell, MessageSquare } from "lucide-react";
 import { HiMenu } from "react-icons/hi";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { BsGrid3X3Gap } from "react-icons/bs";
@@ -19,8 +19,6 @@ import { AiOutlineFullscreen } from "react-icons/ai";
 import { BiMessageDetail } from "react-icons/bi";
 // import whitelogo from "/images/white-logo.png";
 
-// logo
-import Logo from "/images/logo.png";
 
 const SidebarLayout = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -42,8 +40,8 @@ const SidebarLayout = () => {
 
   // Sidebar menus
   const menus = [
-    { name: "Dashboard", icon: <Home /> },
-    { name: "Products", icon: <ShoppingBag />, children: ["Product List", "Add Product", "Product Detail", "Edit Product"] },
+    { name: "Dashboard", icon: <Home strokeWidth={1}/> },
+    { name: "Products", icon: <ShoppingBag strokeWidth={1}/>, children: ["Product List", "Add Product", "Product Detail", "Edit Product"] },
     // {
     //   name: "Ecommerce",
     //   icon: <FaShoppingCart />,
@@ -55,14 +53,14 @@ const SidebarLayout = () => {
     //     "Product Detail 3",
     //   ],
     // },
-    { name: "Category", icon: <Layers2 />, children: ["Add Category", "Category List"] },
-    { name: "Inventory", icon: <Package />, children: ["Warehouse List", "Received Order List"] },
-    { name: "Orders", icon: <Archive />, children: ["Order List", "Order Detail", "Order Tracking", "Returning Orders List"] },
-    { name: "Transactions", icon: <BadgeDollarSign />, children: ["Mode"] },
-    { name: "Invoice", icon: <ReceiptText />, children: ["Invoice List", "Invoice Detail", "Create Invoice"] },
-    { name: "Users", icon: <UserRound />, children: ["User List", "User Roles", "User Permissions"] },
-    { name: "Settings", icon: <Settings />, children: ["General Settings", "Profile Settings", "Security"] },
-    { name: "Support", icon: <MessageCircleQuestionMark />, children: ["Help Centre", "FAQ's"] },
+    { name: "Category", icon: <Layers2 strokeWidth={1}/>, children: ["Add Category", "Category List"] },
+    { name: "Inventory", icon: <Package strokeWidth={1} />, children: ["Warehouse List", "Received Order List"] },
+    { name: "Orders", icon: <Archive strokeWidth={1}/>, children: ["Order List", "Order Detail", "Order Tracking", "Returning Orders List"] },
+    { name: "Transactions", icon: <BadgeDollarSign strokeWidth={1}/>, children: ["Mode"] },
+    { name: "Invoice", icon: <ReceiptText strokeWidth={1}/>, children: ["Invoice List", "Invoice Detail", "Create Invoice"] },
+    { name: "Users", icon: <UserRound strokeWidth={1}/>, children: ["User List", "User Roles", "User Permissions"] },
+    { name: "Settings", icon: <Settings strokeWidth={1}/>, children: ["General Settings", "Profile Settings", "Security"] },
+    { name: "Support", icon: <MessageCircleQuestionMark strokeWidth={1}/>, children: ["Help Centre", "FAQ's"] },
   ];
 
   // Toggle parent menu
@@ -128,6 +126,7 @@ const SidebarLayout = () => {
           >
             <PanelRightClose
               className={`transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`}
+            strokeWidth={1}
             />
           </button>
 
@@ -151,7 +150,7 @@ const SidebarLayout = () => {
               <li key={menu.name}>
                 <button
                   onClick={() => handleMenuClick(menu)}
-                  className={` group w-full rounded-lg text-white/90 hover:text-white transition-colors flex items-center
+                  className={` group w-full rounded-lg text-white hover:text-white transition-colors flex items-center
                     ${expanded ? "bg-green-600" : "hover:bg-green-600/70"}
                     ${isOpen ? "justify-between px-3 py-2" : "justify-center pl-7 p-4"}
                   `}
@@ -215,7 +214,7 @@ const SidebarLayout = () => {
                   placeholder="Search here..."
                   className="bg-gray-100 outline-none px-2 w-full"
                 />
-                <FaSearch className="text-gray-500 w-4 h-4" />
+                <FaSearch className="text-gray-500 w-4 h-4"  />
               </div>
             )}
           </div>
@@ -231,18 +230,18 @@ const SidebarLayout = () => {
             )}
 
             {/* <MdOutlineDarkMode className="text-gray-600 text-xl cursor-pointer" /> */}
-            <FaBell className="text-gray-600 text-xl cursor-pointer" />
-            <BiMessageDetail className="text-gray-600 w-6 h-6.5 cursor-pointer" />
+            <Bell className="text-gray-600 text-xl cursor-pointer" strokeWidth={1}/>
+            <MessageSquare className="text-gray-600 w-5.5 h-5.5 cursor-pointer" strokeWidth={1}  />
             {/* <AiOutlineFullscreen className="text-gray-600 text-xl cursor-pointer" /> */}
             {/* <BsGrid3X3Gap className="text-gray-600 text-xl cursor-pointer" /> */}
             <div className="flex items-center gap-2 cursor-pointer">
-              <CircleUserRound className="w-5.5 h-5.5 text-gray-600" />
+              <CircleUserRound className="w-6 h-6 text-gray-600" strokeWidth={1} />
               <div className="hidden md:flex flex-col leading-tight">
                 <span className="font-medium text-sm text-gray-700">Kristin Watson</span>
                 <span className="text-xs text-gray-500">Admin</span>
               </div>
             </div>
-            <FaCog className="text-gray-600 text-xl cursor-pointer" />
+            <Settings className="text-gray-600 text-xl w-6 h-6 cursor-pointer" strokeWidth={1}/>
           </div>
         </header>
 
@@ -250,7 +249,7 @@ const SidebarLayout = () => {
         {isMobile && showMobileSearch && (
           <div className="fixed inset-0 bg-white z-40 flex items-start p-4 shadow-md">
             <div className="flex items-center bg-gray-100 rounded-md px-3 py-2 w-full">
-              <FaSearch className="text-gray-500" />
+              <FaSearch className="text-gray-500"  />
               <input
                 type="text"
                 placeholder="Search here..."
