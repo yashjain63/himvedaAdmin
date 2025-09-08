@@ -10,13 +10,14 @@ import {
   FaLayerGroup,
   FaTags,
 } from "react-icons/fa";
-import { CircleUserRound, PanelRightClose, X } from "lucide-react";
+import { CircleUserRound, PanelRightClose, X, Shirt, ShoppingBag, LayoutDashboard, Layers2, Archive, UserRound, Settings, Package, BadgeDollarSign, ReceiptText, HandHelping, Home, MessageCircleQuestionMark } from "lucide-react";
 import { HiMenu } from "react-icons/hi";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { BsGrid3X3Gap } from "react-icons/bs";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { AiOutlineFullscreen } from "react-icons/ai";
 import { BiMessageDetail } from "react-icons/bi";
+// import whitelogo from "/images/white-logo.png";
 
 // logo
 import Logo from "/images/logo.png";
@@ -41,23 +42,27 @@ const SidebarLayout = () => {
 
   // Sidebar menus
   const menus = [
-    { name: "Dashboard", icon: <FaHome /> },
-    {
-      name: "Ecommerce",
-      icon: <FaShoppingCart />,
-      children: [
-        "Add Product",
-        "Product List",
-        "Product Detail 1",
-        "Product Detail 2",
-        "Product Detail 3",
-      ],
-    },
-    { name: "Category", icon: <FaLayerGroup />, children: ["Add Category", "Category List"] },
-    { name: "Attributes", icon: <FaTags />, children: ["Add Attribute", "Attribute List"] },
-    { name: "Orders", icon: <FaBoxOpen />, children: ["Order List", "Order Detail"] },
-    { name: "Users", icon: <FaUser />, children: ["User List", "User Roles", "User Permissions"] },
-    { name: "Settings", icon: <FaCog />, children: ["General Settings", "Profile Settings", "Security"] },
+    { name: "Dashboard", icon: <Home /> },
+    { name: "Products", icon: <ShoppingBag />, children: ["Product List", "Add Product", "Product Detail", "Edit Product"] },
+    // {
+    //   name: "Ecommerce",
+    //   icon: <FaShoppingCart />,
+    //   children: [
+    //     "Add Product",
+    //     "Product List",
+    //     "Product Detail 1",
+    //     "Product Detail 2",
+    //     "Product Detail 3",
+    //   ],
+    // },
+    { name: "Category", icon: <Layers2 />, children: ["Add Category", "Category List"] },
+    { name: "Inventory", icon: <Package />, children: ["Warehouse List", "Received Order List"] },
+    { name: "Orders", icon: <Archive />, children: ["Order List", "Order Detail", "Order Tracking", "Returning Orders List"] },
+    { name: "Transactions", icon: <BadgeDollarSign />, children: ["Mode"] },
+    { name: "Invoice", icon: <ReceiptText />, children: ["Invoice List", "Invoice Detail", "Create Invoice"] },
+    { name: "Users", icon: <UserRound />, children: ["User List", "User Roles", "User Permissions"] },
+    { name: "Settings", icon: <Settings />, children: ["General Settings", "Profile Settings", "Security"] },
+    { name: "Support", icon: <MessageCircleQuestionMark />, children: ["Help Centre", "FAQ's"] },
   ];
 
   // Toggle parent menu
@@ -108,7 +113,8 @@ const SidebarLayout = () => {
         <div className="flex items-center justify-between px-3 pt-5 pb-4">
           <div className="flex items-center gap-2">
             <img
-              src={Logo}
+              // src={Logo}
+              src="/images/whiteLogo.png"
               alt="Logo"
               className={`transition-all duration-300 ${isOpen ? "w-32 h-16" : "w-10 h-10 mx-auto"}`}
             />
@@ -204,12 +210,12 @@ const SidebarLayout = () => {
             {/* Desktop Search */}
             {!isMobile && (
               <div className="flex items-center bg-gray-100 rounded-md px-3 py-1 w-full sm:w-64 md:w-72 lg:w-96">
-                <FaSearch className="text-gray-500" />
                 <input
                   type="text"
                   placeholder="Search here..."
                   className="bg-gray-100 outline-none px-2 w-full"
                 />
+                <FaSearch className="text-gray-500 w-4 h-4" />
               </div>
             )}
           </div>
@@ -219,21 +225,21 @@ const SidebarLayout = () => {
             {/* Mobile search icon */}
             {isMobile && (
               <FaSearch
-                className="text-gray-600 text-xl cursor-pointer"
+                className="text-gray-600 w-4.5 h-4.5 text-xl cursor-pointer"
                 onClick={() => setShowMobileSearch(true)}
               />
             )}
 
-            <MdOutlineDarkMode className="text-gray-600 text-xl cursor-pointer" />
+            {/* <MdOutlineDarkMode className="text-gray-600 text-xl cursor-pointer" /> */}
             <FaBell className="text-gray-600 text-xl cursor-pointer" />
-            <BiMessageDetail className="text-gray-600 text-xl cursor-pointer" />
-            <AiOutlineFullscreen className="text-gray-600 text-xl cursor-pointer" />
-            <BsGrid3X3Gap className="text-gray-600 text-xl cursor-pointer" />
+            <BiMessageDetail className="text-gray-600 w-6 h-6.5 cursor-pointer" />
+            {/* <AiOutlineFullscreen className="text-gray-600 text-xl cursor-pointer" /> */}
+            {/* <BsGrid3X3Gap className="text-gray-600 text-xl cursor-pointer" /> */}
             <div className="flex items-center gap-2 cursor-pointer">
-              <CircleUserRound className="w-8 h-8 text-gray-600" />
+              <CircleUserRound className="w-5.5 h-5.5 text-gray-600" />
               <div className="hidden md:flex flex-col leading-tight">
-                <span className="font-medium text-gray-700">Kristin Watson</span>
-                <span className="text-sm text-gray-500">Admin</span>
+                <span className="font-medium text-sm text-gray-700">Kristin Watson</span>
+                <span className="text-xs text-gray-500">Admin</span>
               </div>
             </div>
             <FaCog className="text-gray-600 text-xl cursor-pointer" />
