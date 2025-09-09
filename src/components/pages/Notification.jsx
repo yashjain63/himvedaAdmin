@@ -76,10 +76,10 @@ const NotificationsPage = () => {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-5 py-2 rounded-md border transition text-sm ${
+            className={`px-5 py-2 rounded-md border transition text-sm cursor-pointer ${
               activeTab === tab
                 ? "bg-green-600 text-white border-green-600"
-                : "border-gray-300 text-gray-700 hover:bg-gray-100"
+                : "bg-white text-red-900 border-red-900"
             }`}
           >
             {tab}
@@ -96,7 +96,7 @@ const NotificationsPage = () => {
           >
             {/* Avatar */}
             <img
-              src="https://via.placeholder.com/40x40.png?text=H"
+              src="/images/member.jpg"
               alt="avatar"
               className="w-10 h-10 rounded-full"
             />

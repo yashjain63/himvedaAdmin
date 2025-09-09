@@ -149,11 +149,11 @@ const topProducts = [
 ];
 
 const topCustomers = [
-  { img: "/images/member.jpg", name: "Dinesh Rajput", sold: "120", price: "₹16.96" },
-  { img: "/images/member2.jpg", name: "Priya Singh", sold: "120", price: "₹16.96" },
-  { img: "/images/member3.jpg", name: "Suresh Pathak", sold: "120", price: "₹16.96" },
-  { img: "/images/member.jpg", name: "Anshul Khanna", sold: "120", price: "₹16.96" },
-  { img: "/images/member2.jpg", name: "Shivani Bishnoi", sold: "120", price: "₹16.96" },
+  { img: "/images/member.jpg", name: "Dinesh Rajput", age: "30" },
+  { img: "/images/member2.jpg", name: "Priya Singh", age: "20"},
+  { img: "/images/member3.jpg", name: "Suresh Pathak", age: "40"},
+  { img: "/images/member.jpg", name: "Anshul Khanna", age: "35"},
+  { img: "/images/member2.jpg", name: "Shivani Bishnoi", age: "28"},
 ];
 
 const productOverview = [
@@ -344,8 +344,7 @@ const Dashboard = () => {
       </div>
 
       {/* Recent Orders */}
-      {/* Recent Orders Section */}
-      <div className="bg-white shadow-sm rounded-xl p-6">
+      <div className="bg-white shadow-sm rounded-xl p-3 md:p-6">
         <h2 className="text-lg font-semibold mb-4">Recent orders</h2>
         <div className="overflow-x-auto hidden md:block">
           <table className="w-full text-sm text-left border-separate border-spacing-y-2">
@@ -368,7 +367,7 @@ const Dashboard = () => {
                     <img
                       src={order.img}
                       alt="product"
-                      className="w-10 h-10 rounded-lg object-cover border"/>
+                      className="w-10 h-10 rounded-lg object-cover border" />
                     <span className="font-medium text-gray-800 truncate max-w-[180px]">
                       {order.product}
                     </span>
@@ -395,6 +394,48 @@ const Dashboard = () => {
           </table>
         </div>
 
+        {/* Mobile Card View */}
+        <div className="space-y-4 md:hidden">
+          {paginatedOrders.map((order, i) => (
+            <div
+              key={i}
+              className="bg-white p-2 rounded-lg shadow hover:bg-gray-50"
+            >
+              <div className="flex items-center gap-3">
+                <img
+                  src={order.img}
+                  alt="product"
+                  className="w-12 h-12 rounded-lg border"
+                />
+                <div>
+                  <p className="font-medium text-gray-800">{order.product}</p>
+                  <p className="text-sm text-gray-500">
+                    {order.customer} customers
+                  </p>
+                </div>
+              </div>
+              <div className="mt-3 flex justify-between text-sm text-gray-600">
+                <span>ID: {order.id}</span>
+                <span>Qty: {order.qty}</span>
+              </div>
+              <div className="mt-2 flex justify-between items-center">
+                <span className="font-semibold">{order.price}</span>
+                <span
+                  className={`px-2 py-1 rounded-full text-xs font-medium
+                  ${order.status === "Completed"
+                      ? "bg-green-100 text-green-700"
+                      : order.status === "Pending"
+                        ? "bg-yellow-100 text-yellow-700"
+                        : "bg-red-100 text-red-700"
+                    }`}
+                >
+                  {order.status}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* Pagination */}
         <div className="flex justify-center md:justify-end mt-4 space-x-1 md:space-x-2">
           <button
@@ -411,8 +452,8 @@ const Dashboard = () => {
                 key={page}
                 onClick={() => setCurrentPage(page)}
                 className={`px-4 py-1 rounded-full ${currentPage === page
-                    ? "bg-red-900 text-white"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  ? "bg-red-900 text-white"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }`}>
                 {page}
               </button>
@@ -472,15 +513,13 @@ const Dashboard = () => {
             <thead className="">
               <tr>
                 <th className="px-2 py-2">Product</th>
-                {/* <th className="px-2 py-2">Review</th> */}
-                <th className="px-2 py-2">Sold</th>
-                <th className="px-2 py-2">Price</th>
+                <th className="px-2 py-2">Age</th>
               </tr>
             </thead>
             <tbody>
               {topCustomers.map((c, i) => (
                 <tr key={i} className="border-b hover:bg-gray-50">
-                  <td className="pr-4 py-3 flex items-center gap-3">
+                  <td className="pr-16 py-3 flex items-center gap-3">
                     <img
                       src={c.img}
                       alt="product"
@@ -490,10 +529,8 @@ const Dashboard = () => {
                       {c.name}
                     </span>
                   </td>
-                  {/* <td className="px-2 py-2">{p.name}</td> */}
-                  {/* <td className="px-2 py-2">{p.review}⭐</td> */}
-                  <td className="px-2 py-2">{c.sold}</td>
-                  <td className="px-2 py-2">{c.price}</td>
+                  <td className="px-2 py-2">{c.age}</td>
+                  <td className="px-2 py-2">{c.money}</td>
                 </tr>
               ))}
             </tbody>

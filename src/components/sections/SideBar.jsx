@@ -29,6 +29,8 @@ import AddProduct from "../pages/AddProduct";
 import ProductDetail from "../pages/ProductDetail";
 // import EditProduct from "../pages/EditProduct";
 import Notification from "../pages/Notification";
+import Dropdown from "../pages/Dropdown";
+
 
 
 const SidebarLayout = () => {
@@ -258,12 +260,19 @@ const SidebarLayout = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+
+  // for notification
+  const [unreadCount, setUnreadCount] = useState(notifications.length); // default all as unread
+
+  // const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const [isMessagesOpen, setIsMessagesOpen] = useState(false);
+
   return (
     <div className="h-screen bg-gray-50">
 
-      <Routes>
+      {/* <Routes>
         <Route path="/notifications" element={<Notification />} />
-      </Routes>
+      </Routes> */}
 
       {/* Overlay for mobile */}
       {isMobile && isOpen && (
@@ -401,99 +410,41 @@ const SidebarLayout = () => {
               />
             )}
 
-            {/* Notification bell */}
-            <div className="relative" ref={dropdownRef}>
-              <button
-                onClick={() => setIsNotificationOpen(!isNotificationOpen)}
-                className="relative p-2 rounded-full hover:bg-gray-100"
-              >
-                <Bell className="text-gray-600 text-xl cursor-pointer" strokeWidth={1} />
-                <span className="absolute top-1 right-1 bg-red-900 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                  1
-                </span>
-              </button>
 
-              {isNotificationOpen && (
-                <div className="absolute right-0 mt-5 w-80 bg-white shadow-lg rounded-2xl overflow-hidden z-50">
-                  <div className="p-4 border-b border-gray-200">
-                    <h3 className="text-lg font-semibold">Notifications</h3>
-                  </div>
 
-                  <div className="max-h-72 overflow-y-auto">
-                    {notifications.map((item) => (
-                      <div
-                        key={item.id}
-                        className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition"
-                      >
-                        <div className={`flex items-center justify-center w-10 h-10 rounded-full ${item.color}`}>
-                          <span className="text-lg">{item.icon}</span>
-                        </div>
-                        <div className="flex-1">
-                          <p className="font-semibold text-gray-800 text-sm">{item.title}</p>
-                          <p className="text-xs text-gray-500">{item.text}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+{/* Notification Icon */}
+      <button onClick={() => {
+        setIsNotificationOpen(!isNotificationOpen);
+        setIsMessagesOpen(false); // close messages if open
+      }}>
+        <Bell className="text-gray-600 text-xl cursor-pointer" strokeWidth={1} />
+      </button>
 
-                  <div className="p-3 border-t border-gray-200">
-                    <button className="w-full border text-red-900 border-red-900 hover:bg-red-800 hover:text-white py-2 rounded-lg font-medium transition"
-                   onClick={() => navigate("/notifications")}>
-                      View all
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
+      {/* Messages Icon */}
+      <button onClick={() => {
+        setIsMessagesOpen(!isMessagesOpen);
+        setIsNotificationOpen(false); // close notifications if open
+      }}>
+        <MessageSquare className="text-gray-600 w-5.5 h-5.5 cursor-pointer" strokeWidth={1} />
+      </button>
 
-            {/* Message dropdown */}
-            <div className="relative" ref={dropdownnRef}>
-              <button
-                onClick={() => setOpen(!open)}
-                className="relative p-2 rounded-full hover:bg-gray-100"
-              >
-                <MessageSquare className="text-gray-600 w-5.5 h-5.5 cursor-pointer" strokeWidth={1} />
-                <span className="absolute top-1 right-1 bg-red-900 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                  1
-                </span>
-              </button>
+      {/* Dropdowns */}
+      <Dropdown
+        open={isNotificationOpen}
+        title="Notifications"
+        type="notifications"
+        items={notifications}
+      />
 
-              {open && (
-                <div className="absolute right-0 mt-5 w-80 bg-white shadow-lg rounded-2xl overflow-hidden z-50">
-                  <div className="p-4 border-b border-gray-200">
-                    <h3 className="text-lg font-semibold">Message</h3>
-                  </div>
+      <Dropdown
+        open={isMessagesOpen}
+        title="Messages"
+        type="messages"
+        items={messages}
+      />
 
-                  <div className="max-h-72 overflow-y-auto">
-                    {messages.map((msg) => (
-                      <div
-                        key={msg.id}
-                        className="flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition"
-                      >
-                        <div className="flex items-center gap-3">
-                          <img
-                            src={msg.img}
-                            alt={msg.name}
-                            className="w-10 h-10 rounded-full object-cover"
-                          />
-                          <div>
-                            <p className="font-semibold text-gray-800 text-sm">{msg.name}</p>
-                            <p className="text-xs text-gray-500 truncate">{msg.text}</p>
-                          </div>
-                        </div>
-                        <span className="text-xs text-gray-400">{msg.time}</span>
-                      </div>
-                    ))}
-                  </div>
 
-                  <div className="p-3 border-t border-gray-200">
-                    <button className="w-full border text-red-900 border-red-900 hover:bg-red-800 hover:text-white py-2 rounded-lg font-medium transition">
-                      View all
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
+            {/* if needed put here from bottom */}
 
             {/* Profile */}
             <div className="relative">
@@ -519,6 +470,8 @@ const SidebarLayout = () => {
               }
               return <Route key={menu.path} path={menu.path} element={menu.component} />;
             })}
+            {/* ✅ Add Notification route here */}
+            <Route path="/notifications" element={<Notification />} />
 
             {/* Catch-all (optional) */}
             <Route path="*" element={<h2>404 - Page Not Found</h2>} />
@@ -530,6 +483,145 @@ const SidebarLayout = () => {
 };
 
 export default SidebarLayout;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// put this above it needed here
+
+// {/* Notification bell */}
+//             <div className="relative" ref={dropdownRef}>
+//               <button
+//                 onClick={() => setIsNotificationOpen(!isNotificationOpen)}
+//                 className="relative p-2 rounded-full hover:bg-gray-100"
+//               >
+//                 <Bell className="text-gray-600 text-xl cursor-pointer" strokeWidth={1} />
+//                 {unreadCount > 0 && (
+//                   <span className="absolute top-1 right-1 bg-red-900 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+//                     {unreadCount}
+//                   </span>
+//                 )}
+
+//               </button>
+
+//               {isNotificationOpen && (
+//                 <div
+//                   className="
+//                           fixed top-16 left-0 right-0 mx-3 z-50
+//                           bg-white shadow-lg rounded-2xl overflow-hidden
+//                           md:absolute md:top-auto md:left-1/2 md:right-auto md:mx-0 md:mt-5 md:-translate-x-1/2
+//                           md:w-80 md:max-w-[90vw]
+//                         "
+//                 >
+//                   <div className="p-4 border-b border-gray-200 w-full">
+//                     <h3 className="text-lg font-semibold">Notifications</h3>
+//                   </div>
+
+//                   <div className="w-full max-h-[70vh] md:max-h-72 overflow-y-auto">
+//                     {notifications.map((item) => (
+//                       <div
+//                         key={item.id}
+//                         className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition w-full"
+//                       >
+//                         <div className={`flex items-center justify-center w-10 h-10 rounded-full ${item.color}`}>
+//                           <span className="text-lg">{item.icon}</span>
+//                         </div>
+//                         <div className="flex-1">
+//                           <p className="font-semibold text-gray-800 text-sm">{item.title}</p>
+//                           <p className="text-xs text-gray-500">{item.text}</p>
+//                         </div>
+//                       </div>
+//                     ))}
+//                   </div>
+
+//                   <div className="p-3 border-t border-gray-200 w-full">
+//                     <button
+//                       className="w-full border text-red-900 border-red-900 hover:bg-red-800 hover:text-white py-2 rounded-lg font-medium transition"
+//                       onClick={() => {
+//                         setUnreadCount(0);
+//                         navigate("/notifications");
+//                         setIsNotificationOpen(false);
+//                         if (isMobile) setIsOpen(false);
+//                       }}
+//                     >
+//                       View all
+//                     </button>
+//                   </div>
+//                 </div>
+//               )}
+
+//             </div>
+
+//             {/* Message dropdown */}
+//             <div className="relative" ref={dropdownnRef}>
+//               <button
+//                 onClick={() => setOpen(!open)}
+//                 className="relative p-2 rounded-full hover:bg-gray-100"
+//               >
+//                 <MessageSquare className="text-gray-600 w-5.5 h-5.5 cursor-pointer" strokeWidth={1} />
+//                 <span className="absolute top-1 right-1 bg-red-900 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+//                   1
+//                 </span>
+//               </button>
+
+//               {open && (
+//                 <div
+//                   className="
+//       fixed top-16 left-0 right-0 mx-3 z-50
+//       bg-white shadow-lg rounded-2xl overflow-hidden
+//       md:absolute md:top-auto md:left-1/2 md:right-auto md:mx-0 md:mt-5 md:-translate-x-1/2
+//       md:w-80 md:max-w-[90vw]
+//     "
+//                 >
+//                   <div className="p-4 border-b border-gray-200 w-full">
+//                     <h3 className="text-lg font-semibold">Messages</h3>
+//                   </div>
+
+//                   <div className="w-full max-h-[70vh] md:max-h-72 overflow-y-auto">
+//                     {messages.map((msg) => (
+//                       <div
+//                         key={msg.id}
+//                         className="flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition w-full"
+//                       >
+//                         <div className="flex items-center gap-3">
+//                           <img
+//                             src={msg.img}
+//                             alt={msg.name}
+//                             className="w-10 h-10 rounded-full object-cover"
+//                           />
+//                           <div>
+//                             <p className="font-semibold text-gray-800 text-sm">{msg.name}</p>
+//                             <p className="text-xs text-gray-500 truncate">{msg.text}</p>
+//                           </div>
+//                         </div>
+//                         <span className="text-xs text-gray-400">{msg.time}</span>
+//                       </div>
+//                     ))}
+//                   </div>
+
+//                   <div className="p-3 border-t border-gray-200 w-full">
+//                     <button className="w-full border text-red-900 border-red-900 hover:bg-red-800 hover:text-white py-2 rounded-lg font-medium transition">
+//                       View all
+//                     </button>
+//                   </div>
+//                 </div>
+//               )}
+
+//             </div>
+
+
+// End here
 
 
 
