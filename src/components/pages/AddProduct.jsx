@@ -31,7 +31,7 @@ export default function AddProduct() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
         <h2 className="text-2xl font-bold">Add Product</h2>
         <div className="text-sm text-gray-500 mt-2 sm:mt-0">
-          <span>Dashboard</span> &gt; <span>Ecommerce</span> &gt;{" "}
+          <span>Dashboard</span> &gt; <span>Products</span> &gt;{" "}
           <span className="text-gray-800 font-medium">Add product</span>
         </div>
       </div>
@@ -154,7 +154,7 @@ export default function AddProduct() {
               />
               <label
                 htmlFor="fileUpload"
-                className="mt-3 px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 cursor-pointer"
+                className="mt-3 px-4 py-2 bg-red-900 text-white text-sm rounded-md hover:bg-red-800 cursor-pointer"
               >
                 Browse Files
               </label>
@@ -224,13 +224,13 @@ export default function AddProduct() {
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-3 mt-4">
-            <button className="bg-green-600 text-[15px] cursor-pointer  text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
+            <button className="bg-red-900 text-[15px] cursor-pointer  text-white px-4 py-2 rounded-lg hover:bg-red-950 transition">
               Add product
             </button>
-            <button className="border border-green-600  cursor-pointer text-[15px] text-green-600 px-4 py-2 rounded-lg hover:bg-green-50 transition">
+            <button className="border border-red-900  cursor-pointer text-[15px] text-red-900 px-4 py-2 rounded-lg hover:bg-red-50 transition">
               Save product
             </button>
-            <button className="border border-green-600  cursor-pointer text-[15px]  text-green-600 px-4 py-2 rounded-lg hover:bg-gray-50 transition">
+            <button className="border border-red-900  cursor-pointer text-[15px]  text-red-900 px-4 py-2 rounded-lg hover:bg-gray-50 transition">
               Schedule
             </button>
           </div>
