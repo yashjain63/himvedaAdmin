@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import {
   CircleUserRound,
   PanelRightClose,
@@ -27,6 +28,8 @@ import ProductList from "../pages/ProductList";
 import AddProduct from "../pages/AddProduct";
 import ProductDetail from "../pages/ProductDetail";
 // import EditProduct from "../pages/EditProduct";
+import Notification from "../pages/Notification";
+
 
 const SidebarLayout = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -61,7 +64,7 @@ const SidebarLayout = () => {
       children: [
         { name: "Product List", path: "/products/list", component: <ProductList /> },
         { name: "Add Product", path: "/products/add", component: <AddProduct /> },
-        { name: "Product Detail", path: "/products/detail", component:<ProductDetail/> },
+        { name: "Product Detail", path: "/products/detail", component: <ProductDetail /> },
         { name: "Edit Product", path: "/products/edit", component: <h2>Edit Product Page</h2> },
       ],
     },
@@ -257,6 +260,11 @@ const SidebarLayout = () => {
 
   return (
     <div className="h-screen bg-gray-50">
+
+      <Routes>
+        <Route path="/notifications" element={<Notification />} />
+      </Routes>
+
       {/* Overlay for mobile */}
       {isMobile && isOpen && (
         <div
@@ -429,7 +437,8 @@ const SidebarLayout = () => {
                   </div>
 
                   <div className="p-3 border-t border-gray-200">
-                    <button className="w-full border text-red-900 border-red-900 hover:bg-red-800 hover:text-white py-2 rounded-lg font-medium transition">
+                    <button className="w-full border text-red-900 border-red-900 hover:bg-red-800 hover:text-white py-2 rounded-lg font-medium transition"
+                   onClick={() => navigate("/notifications")}>
                       View all
                     </button>
                   </div>
