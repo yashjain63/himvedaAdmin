@@ -154,7 +154,8 @@ export default function AddProduct() {
               />
               <label
                 htmlFor="fileUpload"
-                className="mt-3 px-4 py-2 bg-red-900 text-white text-sm rounded-md hover:bg-red-800 cursor-pointer"
+                // className="mt-3 px-4 py-2 hover:bg-red-900 hover:text-white text-red-900 text-sm rounded-md border border-red-900 cursor-pointer"
+                className="mt-3 px-4 py-2 bg-red-900 text-white hover:bg-red-950 text-sm rounded-md border border-red-900 cursor-pointer"
               >
                 Browse Files
               </label>
@@ -224,13 +225,13 @@ export default function AddProduct() {
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-3 mt-4">
-            <button className="bg-red-900 text-[15px] cursor-pointer  text-white px-4 py-2 rounded-lg hover:bg-red-950 transition">
+            <button className="border border-red-900 text-[15px] cursor-pointer  text-red-900 px-4 py-2 rounded-lg hover:bg-red-900 hover:text-white transition">
               Add product
             </button>
-            <button className="border border-red-900  cursor-pointer text-[15px] text-red-900 px-4 py-2 rounded-lg hover:bg-red-50 transition">
+            <button className="border border-red-900  cursor-pointer text-[15px] text-red-900 px-4 py-2 rounded-lg hover:bg-red-900 hover:text-white transition">
               Save product
             </button>
-            <button className="border border-red-900  cursor-pointer text-[15px]  text-red-900 px-4 py-2 rounded-lg hover:bg-gray-50 transition">
+            <button className="border border-red-900  cursor-pointer text-[15px] text-red-900 px-4 py-2 rounded-lg hover:bg-red-900 hover:text-white transition">
               Schedule
             </button>
           </div>

@@ -25,7 +25,7 @@ import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 import ProductList from "../pages/ProductList";
 import AddProduct from "../pages/AddProduct";
-// import ProductDetail from "../pages/ProductDetail";
+import ProductDetail from "../pages/ProductDetail";
 // import EditProduct from "../pages/EditProduct";
 
 const SidebarLayout = () => {
@@ -61,7 +61,7 @@ const SidebarLayout = () => {
       children: [
         { name: "Product List", path: "/products/list", component: <ProductList /> },
         { name: "Add Product", path: "/products/add", component: <AddProduct /> },
-        { name: "Product Detail", path: "/products/detail", component: <h2>Product Detail Page</h2> },
+        { name: "Product Detail", path: "/products/detail", component:<ProductDetail/> },
         { name: "Edit Product", path: "/products/edit", component: <h2>Edit Product Page</h2> },
       ],
     },
@@ -429,7 +429,7 @@ const SidebarLayout = () => {
                   </div>
 
                   <div className="p-3 border-t border-gray-200">
-                    <button className="w-full bg-red-900 hover:bg-red-800 text-white py-2 rounded-lg font-medium transition">
+                    <button className="w-full border text-red-900 border-red-900 hover:bg-red-800 hover:text-white py-2 rounded-lg font-medium transition">
                       View all
                     </button>
                   </div>
@@ -478,7 +478,7 @@ const SidebarLayout = () => {
                   </div>
 
                   <div className="p-3 border-t border-gray-200">
-                    <button className="w-full bg-red-900 hover:bg-red-800 text-white py-2 rounded-lg font-medium transition">
+                    <button className="w-full border text-red-900 border-red-900 hover:bg-red-800 hover:text-white py-2 rounded-lg font-medium transition">
                       View all
                     </button>
                   </div>
