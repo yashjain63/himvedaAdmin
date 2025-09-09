@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import ProductList from "./ProductList";
+import { Link } from "react-router-dom";
 import {
   PieChart,
   Pie,
@@ -12,7 +14,7 @@ import {
   LineChart,
   Line,
 } from "recharts";
-import { ShoppingBag, DollarSign, CreditCard, Users, ArrowUpRight } from "lucide-react";
+import { ShoppingBag, DollarSign, CreditCard, Users, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 
 // ---------- Dummy Data ----------
@@ -45,14 +47,10 @@ const earningsData = [
   { month: "Aug", revenue: 30000, profit: 24000 },
 ];
 
-
-
-
-
 const orders = [
   {
     img: "/images/protct1.png",
-    product: "Taste of the Wild Formula Finder",
+    product: "AyuLeaf Cream",
     customer: "2,672",
     id: "28,672.36",
     qty: "X1",
@@ -61,7 +59,7 @@ const orders = [
   },
   {
     img: "/images/protct2.png",
-    product: "Proden PlaqueOff Dental Bites Dog, 150 G",
+    product: "ChandanSilk",
     customer: "2,672",
     id: "28,672.36",
     qty: "X2",
@@ -70,7 +68,7 @@ const orders = [
   },
   {
     img: "/images/protct3.png",
-    product: "Zuke's Lil' Links Healthy Little Sausage Links for Dogs",
+    product: "BhringaRoot",
     customer: "2,672",
     id: "28,672.36",
     qty: "X1",
@@ -79,7 +77,7 @@ const orders = [
   },
   {
     img: "/images/protct4.png",
-    product: "Rachael Ray Nutrish Grain Free Chicken Drumstick",
+    product: "Keshamrit",
     customer: "2,672",
     id: "28,672.36",
     qty: "X3",
@@ -88,7 +86,7 @@ const orders = [
   },
   {
     img: "/images/protct1.png",
-    product: "Fruitables Dog Treats Sweet Potato & Pecan Flavor",
+    product: "Sundarya Glow",
     customer: "2,672",
     id: "28,672.36",
     qty: "X2",
@@ -97,7 +95,7 @@ const orders = [
   },
   {
     img: "/images/protct2.png",
-    product: "Proden PlaqueOff Dental Bites Dog, 150 G",
+    product: "Turmerich",
     customer: "2,672",
     id: "28,672.36",
     qty: "X2",
@@ -106,7 +104,7 @@ const orders = [
   },
   {
     img: "/images/protct3.png",
-    product: "Zuke's Lil' Links Healthy Little Sausage Links for Dogs",
+    product: "TulsiTouch",
     customer: "2,672",
     id: "28,672.36",
     qty: "X1",
@@ -115,7 +113,7 @@ const orders = [
   },
   {
     img: "/images/protct4.png",
-    product: "Rachael Ray Nutrish Grain Free Chicken Drumstick",
+    product: "HaldiHeal",
     customer: "2,672",
     id: "28,672.36",
     qty: "X3",
@@ -124,7 +122,7 @@ const orders = [
   },
   {
     img: "/images/protct1.png",
-    product: "Fruitables Dog Treats Sweet Potato & Pecan Flavor",
+    product: "AmlaRoot Therapy",
     customer: "2,672",
     id: "28,672.36",
     qty: "X2",
@@ -133,7 +131,7 @@ const orders = [
   },
   {
     img: "/images/protct2.png",
-    product: "Taste of the Wild Formula Finder",
+    product: "GlowRoot Base",
     customer: "2,672",
     id: "28,672.36",
     qty: "X1",
@@ -143,27 +141,27 @@ const orders = [
 ];
 
 const topProducts = [
-  {img:"/images/protct1.png", name: "AyuLeaf Cream", sold: "120", price: "₹16.96" },
-  {img:"/images/protct2.png", name: "Kumkumadi Radiance", sold: "120", price: "₹16.96" },
-  {img:"/images/protct3.png", name: "ChandanSilk", sold: "120", price: "₹16.96" },
-  {img:"/images/protct4.png", name: "BhringaRoot", sold: "120", price: "₹16.96" },
-  {img:"/images/protct1.png", name: "Keshamrit", sold: "120", price: "₹16.96" },
+  { img: "/images/protct1.png", name: "AyuLeaf Cream", sold: "120", price: "₹16.96" },
+  { img: "/images/protct2.png", name: "Kumkumadi Radiance", sold: "120", price: "₹16.96" },
+  { img: "/images/protct3.png", name: "ChandanSilk", sold: "120", price: "₹16.96" },
+  { img: "/images/protct4.png", name: "BhringaRoot", sold: "120", price: "₹16.96" },
+  { img: "/images/protct1.png", name: "Keshamrit", sold: "120", price: "₹16.96" },
 ];
 
 const topCustomers = [
-  {img:"/images/member.jpg", name: "Dinesh Rajpur", sold: "120", price: "₹16.96" },
-  {img:"/images/member2.jpg", name: "Priya Singh", sold: "120", price: "₹16.96" },
-  {img:"/images/member3.jpg", name: "Suresh Pathak", sold: "120", price: "₹16.96" },
-  {img:"/images/member.jpg", name: "Anshul Khanna", sold: "120", price: "₹16.96" },
-  {img:"/images/member2.jpg", name: "Shivani Bishnoi", sold: "120", price: "₹16.96" },
+  { img: "/images/member.jpg", name: "Dinesh Rajput", sold: "120", price: "₹16.96" },
+  { img: "/images/member2.jpg", name: "Priya Singh", sold: "120", price: "₹16.96" },
+  { img: "/images/member3.jpg", name: "Suresh Pathak", sold: "120", price: "₹16.96" },
+  { img: "/images/member.jpg", name: "Anshul Khanna", sold: "120", price: "₹16.96" },
+  { img: "/images/member2.jpg", name: "Shivani Bishnoi", sold: "120", price: "₹16.96" },
 ];
 
 const productOverview = [
-  {img:"/images/protct4.png", name: "Baby Oil", sold: "120", price: "₹16.96" },
-  {img:"/images/protct2.png", name: "Face Wash", sold: "120", price: "₹16.96" },
-  {img:"/images/protct1.png", name: "Herbal Shampoo", sold: "120", price: "₹16.96" },
-  {img:"/images/protct4.png", name: "Body Lotion", sold: "120", price: "₹16.96" },
-  {img:"/images/protct3.png", name: "Sundarya Glow", sold: "120", price: "₹16.96" },
+  { img: "/images/protct4.png", name: "Baby Oil", sold: "120", price: "₹16.96" },
+  { img: "/images/protct2.png", name: "Face Wash", sold: "120", price: "₹16.96" },
+  { img: "/images/protct1.png", name: "Herbal Shampoo", sold: "120", price: "₹16.96" },
+  { img: "/images/protct4.png", name: "Body Lotion", sold: "120", price: "₹16.96" },
+  { img: "/images/protct3.png", name: "Sundarya Glow", sold: "120", price: "₹16.96" },
 ];
 
 const earningsDonut = [
@@ -189,12 +187,32 @@ const visitorsData = [
 const Dashboard = () => {
 
   // for recent orders pagination
-  const [currentPage, setCurrentPage] = useState(1);
-  const ordersPerPage = 5;
 
-  const startIndex = (currentPage - 1) * ordersPerPage;
-  const paginatedOrders = orders.slice(startIndex, startIndex + ordersPerPage);
-  const totalPages = Math.ceil(orders.length / ordersPerPage);
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const totalPages = Math.ceil(orders.length / itemsPerPage);
+
+  const paginatedOrders = orders.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePrev = () => {
+    setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev));
+  };
+
+  const handleNext = () => {
+    setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev));
+  };
+
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const ordersPerPage = 5;
+
+  // const startIndex = (currentPage - 1) * ordersPerPage;
+  // const paginatedOrders = orders.slice(startIndex, startIndex + ordersPerPage);
+  // const totalPages = Math.ceil(orders.length / ordersPerPage);
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen space-y-6">
@@ -329,7 +347,7 @@ const Dashboard = () => {
       {/* Recent Orders Section */}
       <div className="bg-white shadow-sm rounded-xl p-6">
         <h2 className="text-lg font-semibold mb-4">Recent orders</h2>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto hidden md:block">
           <table className="w-full text-sm text-left border-separate border-spacing-y-2">
             <thead>
               <tr className="bg-gray-100 text-gray-600 text-sm">
@@ -345,14 +363,12 @@ const Dashboard = () => {
               {paginatedOrders.map((order, i) => (
                 <tr
                   key={i}
-                  className="bg-white even:bg-gray-50 hover:bg-gray-100 transition"
-                >
+                  className="bg-white even:bg-gray-50 hover:bg-gray-100 transition">
                   <td className="px-4 py-3 flex items-center gap-3">
                     <img
                       src={order.img}
                       alt="product"
-                      className="w-10 h-10 rounded-lg object-cover border"
-                    />
+                      className="w-10 h-10 rounded-lg object-cover border"/>
                     <span className="font-medium text-gray-800 truncate max-w-[180px]">
                       {order.product}
                     </span>
@@ -364,13 +380,12 @@ const Dashboard = () => {
                   <td className="px-4 py-3">
                     <span
                       className={`px-2 py-1 rounded-full text-xs font-medium
-                        ${order.status === "Completed"
+                      ${order.status === "Completed"
                           ? "bg-green-100 text-green-700"
                           : order.status === "Pending"
                             ? "bg-yellow-100 text-yellow-700"
                             : "bg-red-100 text-red-700"
-                        }`}
-                    >
+                        }`}>
                       {order.status}
                     </span>
                   </td>
@@ -381,22 +396,35 @@ const Dashboard = () => {
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-end mt-4 space-x-2">
+        <div className="flex justify-center md:justify-end mt-4 space-x-1 md:space-x-2">
+          <button
+            onClick={handlePrev}
+            disabled={currentPage === 1}
+            className="p-2 rounded-full hover:bg-gray-200 disabled:opacity-50">
+            <ChevronLeft className="text-gray-600" />
+          </button>
+
           {[...Array(totalPages)].map((_, i) => {
             const page = i + 1;
             return (
               <button
                 key={page}
                 onClick={() => setCurrentPage(page)}
-                className={`px-3 py-1 rounded-full ${currentPage === page
+                className={`px-4 py-1 rounded-full ${currentPage === page
                     ? "bg-red-900 text-white"
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                  }`}
-              >
+                  }`}>
                 {page}
               </button>
             );
           })}
+
+          <button
+            onClick={handleNext}
+            disabled={currentPage === totalPages}
+            className="p-2 rounded-full hover:bg-gray-200 disabled:opacity-50">
+            <ChevronRight className="text-gray-600" />
+          </button>
         </div>
       </div>
 
@@ -474,7 +502,8 @@ const Dashboard = () => {
 
         {/* Product Overview */}
         <div className="bg-white shadow-sm rounded-xl p-6">
-          <h2 className="text-lg font-semibold mb-4 flex justify-between ">Product Overview <span className="text-sm cursor-pointer hover:text-red-700">View All</span></h2>
+          <h2 className="text-lg font-semibold mb-4 flex justify-between ">Product Overview
+            <Link to="/products/list"><span className="text-sm cursor-pointer hover:text-red-700 pt-2">View All</span></Link></h2>
           <table className="w-full text-sm text-left">
             <thead className="">
               <tr>
