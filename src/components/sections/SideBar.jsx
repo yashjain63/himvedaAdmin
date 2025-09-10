@@ -36,6 +36,9 @@ import EditProduct from "../pages/Products/EditProduct";
 import CategoryList from "../pages/Categories/CategoryList";
 import AddCategory from "../pages/Categories/AddCategory";
 
+import OrderList from "../pages/Order/OrderList";
+import OrderDetail from "../pages/Order/OrderDetail";
+
 import Transaction from "../pages/Transactions/Transaction";
 
 import InvoiceList from "../pages/Invoice/InvoiceList";
@@ -98,8 +101,8 @@ const SidebarLayout = () => {
       name: "Orders",
       icon: <Archive strokeWidth={1} />,
       children: [
-        { name: "Order List", path: "/orders/list", component: <h2>Order List Page</h2> },
-        { name: "Order Detail", path: "/orders/detail", component: <h2>Order Detail Page</h2> },
+        { name: "Order List", path: "/orders/list", component: <OrderList /> },
+        { name: "Order Detail", path: "/orders/detail", component: <OrderDetail /> },
         { name: "Order Tracking", path: "/orders/tracking", component: <h2>Order Tracking Page</h2> },
         { name: "Returning Orders List", path: "/orders/returns", component: <h2>Returning Orders Page</h2> },
       ],
