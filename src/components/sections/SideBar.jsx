@@ -452,6 +452,7 @@ const SidebarLayout = () => {
                 className="text-gray-600 cursor-pointer w-7 h-7"
                 strokeWidth={1}
               />
+              
             </div>
           </div>
         </header>
