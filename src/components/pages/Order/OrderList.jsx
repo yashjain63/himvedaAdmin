@@ -239,7 +239,7 @@ export default function ProductList() {
                             <th className="px-4 py-3">Payment</th>
                             <th className="px-4 py-3">Status</th>
                             <th className="px-4 py-3">Tracking</th>
-                            <th className="px-4 py-3">Action</th>
+                            <th className="px-4 py-3 text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -286,12 +286,11 @@ export default function ProductList() {
                                     </span>
                                 </td>
                                 <td className="px-4 py-3">
-                                    <div className="flex items-center justify-center gap-3 h-full">
+                                    <div className="flex mr-5 justify-center gap-3 h-full">
                                         <button
                                             className="text-blue-600 hover:text-blue-800 cursor-pointer">
                                             {/* // onClick={() => handleView(p)} */}
-
-                                            <Link to="/orders/detail">
+                                            <Link to="/orders/detail ">
                                                 <Eye className="w-5 h-5" />
                                             </Link>
                                         </button>

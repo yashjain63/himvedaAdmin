@@ -1,14 +1,15 @@
 import React from "react";
+import { Truck } from "lucide-react";
 
 const OrderDetail = () => {
   const order = {
     id: "#192847",
     date: "20 Nov 2023",
-    total: "$948.50",
-    subtotal: "$70.13",
-    shipping: "$10.00",
-    tax: "$5.00",
-    finalTotal: "$90.58",
+    total: "₹948.50",
+    subtotal: "₹70.13",
+    shipping: "₹10.00",
+    tax: "₹5.00",
+    finalTotal: "₹90.58",
     address: "3517 W. Gray St. Utica, Pennsylvania 57867",
     payment:
       "Pay on Delivery (Cash/Card). Cash on delivery (COD) available. Card/Net banking acceptance subject to device availability.",
@@ -19,21 +20,21 @@ const OrderDetail = () => {
         name: "Baby Oil",
         image: "/images/protct1.png",
         quantity: 1,
-        price: "$50.47",
+        price: "₹50.47",
       },
       {
         id: 2,
         name: "Face Cream",
         image: "/images/protct2.png",
         quantity: 1,
-        price: "$50.47",
+        price: "₹50.47",
       },
       {
         id: 3,
         name: "Face Wash",
         image: "/images/protct3.png",
         quantity: 1,
-        price: "$50.47",
+        price: "₹50.47",
       },
     ],
   };
@@ -41,7 +42,7 @@ const OrderDetail = () => {
   return (
     <div className="max-w-7xl mx-auto p-4 lg:p-6">
       {/* Header */}
-      <h1 className="text-2xl font-bold mb-6">Order Details</h1>
+      <h1 className="text-3xl font-semibold mb-6">Order Details</h1>
 
       {/* Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
@@ -97,7 +98,7 @@ const OrderDetail = () => {
           </div>
 
           {/* Cart Totals */}
-          <div className="bg-white rounded-2xl shadow p-4">
+          <div className="bg-white rounded-xl shadow p-4">
             <h2 className="font-semibold text-lg mb-4">Cart Totals</h2>
             <div className="divide-y text-sm">
               <div className="flex justify-between py-2">
@@ -123,7 +124,7 @@ const OrderDetail = () => {
         {/* Right: Summary */}
         <div className="flex flex-col gap-6 h-full">
           {/* Summary */}
-          <div className="bg-white rounded-2xl shadow p-4">
+          <div className="bg-white rounded-xl shadow p-4">
             <h2 className="font-semibold text-md mb-4">Summary</h2>
             <p className="text-sm">
               Order ID: <span className="font-semibold">{order.id}</span>
@@ -138,27 +139,27 @@ const OrderDetail = () => {
           </div>
 
           {/* Shipping */}
-          <div className="bg-white rounded-2xl shadow p-4">
-            <h2 className="font-semibold text-lg mb-2">Shipping Address</h2>
+          <div className="bg-white rounded-xl shadow p-4">
+            <h2 className="font-semibold text-md mb-2">Shipping Address</h2>
             <p className="text-sm text-gray-600">{order.address}</p>
           </div>
 
           {/* Payment */}
-          <div className="bg-white rounded-2xl shadow p-4">
-            <h2 className="font-semibold text-lg mb-2">Payment Method</h2>
+          <div className="bg-white rounded-xl shadow p-4">
+            <h2 className="font-semibold text-md mb-2">Payment Method</h2>
             <p className="text-sm text-gray-600">{order.payment}</p>
           </div>
 
-          {/* Delivery */}
-          <div className="bg-white rounded-2xl shadow p-4 flex-1">
-            <h2 className="font-semibold text-lg mb-2">
+          {/* Delivery🚚  */}
+          <div className="bg-white rounded-xl shadow p-4 fl">
+            <h2 className="font-semibold text-md mb-2">
               Expected Date Of Delivery
             </h2>
             <p className="text-green-600 font-medium mb-3">
               {order.deliveryDate}
             </p>
-            <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md">
-              🚚 Track order
+            <button className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-red-900 text-red-900 hover:bg-red-900 hover:text-white rounded-md">
+              <Truck/> Track order
             </button>
           </div>
         </div>
