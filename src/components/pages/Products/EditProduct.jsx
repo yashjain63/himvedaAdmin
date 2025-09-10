@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const EditProduct = () => {
-  const [isEditing, setIsEditing] = useState(false);
+const [isEditing, setIsEditing] = useState(false);
   const [product, setProduct] = useState({
     name: "Sample Product",
     subtitle: "Best Quality Product",

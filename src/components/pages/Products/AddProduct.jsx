@@ -31,7 +31,7 @@ export default function AddProduct() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
         <h2 className="text-2xl font-bold">Add Product</h2>
         <div className="text-sm text-gray-500 mt-2 sm:mt-0">
-          <span>Dashboard</span> &gt; <span>Products</span> &gt;{" "}
+          <span>Products</span> &gt;{" "}
           <span className="text-gray-800 font-medium">Add product</span>
         </div>
       </div>
@@ -42,6 +42,15 @@ export default function AddProduct() {
         <div className="bg-white p-6 rounded-lg shadow-md space-y-5">
           {/* Product Name */}
           <div>
+            <label className="block text-[16px] font-bold  mb-1">
+              Product ID<span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              placeholder="#123456"
+              className="w-full border border-gray-200 rounded-lg outline-none px-4 py-2 text-sm  "
+
+            />
             <label className="block text-[16px] font-bold  mb-1">
               Product name <span className="text-red-500">*</span>
             </label>

@@ -1,16 +1,20 @@
 import { useState } from "react";
 import { FaStar, FaTruck } from "react-icons/fa";
-import first from "../../assets/images/products/1st.png";
-import second from "../../assets/images/products/2nd.jpg";
-import third from "../../assets/images/products/3rd.jpg";
-import forth from "../../assets/images/products/4th.webp";
-import NATURAL_PILES_CARE_HERBS from "../../assets/images/products/NATURAL_PILES_CARE_HERBS.webp";
+import first from "../../../assets/images/products/1st.png";
+import second from "../../../assets/images/products/2nd.jpg";
+import third from "../../../assets/images/products/3rd.jpg";
+import forth from "../../../assets/images/products/4th.webp";
+import NATURAL_PILES_CARE_HERBS from "../../../assets/images/products/NATURAL_PILES_CARE_HERBS.webp";
 import { LuHeart, LuShare2 } from "react-icons/lu";
-import { FlaskConical, Sprout} from "lucide-react";
+import { FlaskConical, Sprout } from "lucide-react";
+
+import { Link } from "react-router-dom";
+import { Pencil } from "lucide-react";
+import EditProduct from "./EditProduct";
 
 const NoPreservatives = (props) => (
 
-   <svg
+  <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     fill="none"
@@ -30,7 +34,7 @@ const NoPreservatives = (props) => (
     <line x1="8" y1="6" x2="16" y2="6" />
 
     {/* Slash line */}
-    <line  x1="6" y1="20" x2="18" y2="6" />
+    <line x1="6" y1="20" x2="18" y2="6" />
   </svg>
 );
 
@@ -96,6 +100,11 @@ const ProductDetail = () => {
 
   return (
     <div className="w-full pt-5">
+      <div className="ml-[93%]">
+        <Link className="flex mb-5 hover:text-red-900" to="/products/edit">
+          <Pencil className="w-5 h-4 mt-1 " /><span className="ml-2">Edit</span>
+        </Link>
+      </div>
       <div className="max-w-[94%] mx-auto px-4 sm:px-6 lg:px-0 flex flex-col gap-10">
         {/* Product Section */}
         <div className="flex flex-col lg:flex-row gap-10">
@@ -109,9 +118,8 @@ const ProductDetail = () => {
                   src={src}
                   alt={`Thumbnail ${i + 1}`}
                   onClick={() => setMainImage(src)}
-                  className={`w-14 h-14 object-cover border rounded cursor-pointer shrink-0 ${
-                    mainImage === src ? "ring-2 ring-green-500" : ""
-                  }`}
+                  className={`w-14 h-14 object-cover border rounded cursor-pointer shrink-0 ${mainImage === src ? "ring-2 ring-green-500" : ""
+                    }`}
                 />
               ))}
             </div>
@@ -162,11 +170,10 @@ const ProductDetail = () => {
                 {sizes.map((size) => (
                   <button
                     key={size.label}
-                    className={`border px-3 py-1 rounded text-sm ${
-                      selectedSize.label === size.label
-                        ? "bg-green-600 text-white font-medium"
-                        : "hover:bg-gray-100"
-                    }`}
+                    className={`border px-3 py-1 rounded text-sm ${selectedSize.label === size.label
+                      ? "bg-green-600 text-white font-medium"
+                      : "hover:bg-gray-100"
+                      }`}
                     onClick={() => setSelectedSize(size)}
                   >
                     {size.label}
@@ -287,7 +294,7 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        
+
 
 
         {/* Tabs Section */}
@@ -298,10 +305,9 @@ const ProductDetail = () => {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={` text-sm sm:text-base md:text-lg font-medium capitalize border-b-2 
-                  ${
-                    activeTab === tab
-                      ? "border-green-600 text-green-600"
-                      : "border-transparent text-gray-500 hover:text-black"
+                  ${activeTab === tab
+                    ? "border-green-600 text-green-600"
+                    : "border-transparent text-gray-500 hover:text-black"
                   }`}
               >
                 {tab}
@@ -314,7 +320,7 @@ const ProductDetail = () => {
             {activeTab === "description" && (
               <p className="text-justify">
 
-               {/* ✅ Assurance Section */}
+                {/* ✅ Assurance Section */}
                 <div className="grid grid-cols-3 gap-6 text-center my-11">
                   <div className="flex flex-col items-center">
                     {/* <img src="https://img.icons8.com/ios-filled/50/000000/test-tube.png" alt="Lab Tested" className="h-10 mb-2" /> */}
@@ -338,7 +344,7 @@ const ProductDetail = () => {
                 <br />
                 Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste esse vitae quos itaque aliquam dolorem qui doloremque suscipit non molestiae illo saepe, obcaecati quis reiciendis rerum fuga sunt, accusantium officiis repudiandae voluptate iure eveniet. Molestiae repudiandae utvoluptatem. Molestiae illum ducimus earum iusto incidunt, quisconsectetur soluta sequi quam odio.
                 <br />
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, 
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam,
                 repellendus sequi debitis at ab placeat atque officiis corporis
                 minus enim?
                 <br /> <br />

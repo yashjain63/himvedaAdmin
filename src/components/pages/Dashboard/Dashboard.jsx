@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProductList from "./ProductList";
+import ProductList from "../Products/ProductList";
 import { Link } from "react-router-dom";
 import {
   PieChart,

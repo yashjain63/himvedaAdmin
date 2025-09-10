@@ -23,13 +23,18 @@ import { FaSearch } from "react-icons/fa";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 
 // Pages
-import Dashboard from "../pages/Dashboard";
-import ProductList from "../pages/ProductList";
-import AddProduct from "../pages/AddProduct";
-import ProductDetail from "../pages/ProductDetail";
-// import EditProduct from "../pages/EditProduct";
 import Notification from "../pages/Notification";
 import Dropdown from "../pages/Dropdown";
+
+import Dashboard from "../pages/Dashboard/Dashboard";
+
+import ProductList from "../pages/Products/ProductList";
+import AddProduct from "../pages/Products/AddProduct";
+import ProductDetail from "../pages/Products/ProductDetail";
+import EditProduct from "../pages/Products/EditProduct";
+
+import CategoryList from "../pages/Categories/CategoryList";
+
 
 
 
@@ -67,15 +72,16 @@ const SidebarLayout = () => {
         { name: "Product List", path: "/products/list", component: <ProductList /> },
         { name: "Add Product", path: "/products/add", component: <AddProduct /> },
         { name: "Product Detail", path: "/products/detail", component: <ProductDetail /> },
-        { name: "Edit Product", path: "/products/edit", component: <h2>Edit Product Page</h2> },
+        { name: "Edit Product", path: "/products/edit", component: <EditProduct /> },
       ],
     },
     {
       name: "Category",
       icon: <Layers2 strokeWidth={1} />,
       children: [
+        { name: "Category List", path: "/category/list", component: <CategoryList /> },
         { name: "Add Category", path: "/category/add", component: <h2>Add Category Page</h2> },
-        { name: "Category List", path: "/category/list", component: <h2>Category List Page</h2> },
+        
       ],
     },
     {

@@ -9,152 +9,152 @@ export default function ProductList() {
   const [products, setProducts] = useState([
     {
       id: "#7712301",
-      name: "Dog Food, Chicken & Chicken Liver Recipe",
-      price: "$1,452.500",
+      name: "GlowRoot Base",
+      price: "₹1,452.500",
       quantity: 1638,
       sale: 20,
       stock: "In stock",
-      revenue: "$28,672.36",
+      revenue: "₹28,672.36",
       image: "/images/protct1.png",
     },
     {
       id: "#7712302",
-      name: "Grain Free Dry Dog Food | Rachael Ray® Nutrish®",
-      price: "$1,452.500",
+      name: "Bhringa Root",
+      price: "₹1,452.500",
       quantity: 1638,
       sale: 20,
       stock: "Out of stock",
-      revenue: "$28,672.36",
+      revenue: "₹28,672.36",
       image: "/images/protct2.png",
     },
     {
       id: "#7712303",
-      name: "Weruva Pumpkin Patch Up! Pumpkin With Ginger",
-      price: "$1,452.500",
+      name: "Amla Root Therapy",
+      price: "₹1,452.500",
       quantity: 1638,
       sale: 20,
       stock: "In stock",
-      revenue: "$28,672.36",
+      revenue: "₹28,672.36",
       image: "/images/protct3.png",
     },
     {
       id: "#7712304",
-      name: "Dog Food, Chicken & Chicken Liver Recipe",
-      price: "$1,452.500",
+      name: "Tulsi Touch",
+      price: "₹1,452.500",
       quantity: 1638,
       sale: 20,
       stock: "In stock",
-      revenue: "$28,672.36",
+      revenue: "₹28,672.36",
       image: "/images/protct1.png",
     },
     {
       id: "#7712305",
-      name: "Grain Free Dry Dog Food | Rachael Ray® Nutrish®",
-      price: "$1,452.500",
+      name: "Haldi Heal",
+      price: "₹1,452.500",
       quantity: 1638,
       sale: 20,
       stock: "Out of stock",
-      revenue: "$28,672.36",
+      revenue: "₹28,672.36",
       image: "/images/protct2.png",
     },
     {
       id: "#7712306",
-      name: "Weruva Pumpkin Patch Up! Pumpkin With Ginger",
-      price: "$1,452.500",
+      name: "Keshamrit oil",
+      price: "₹1,452.500",
       quantity: 1638,
       sale: 20,
       stock: "In stock",
-      revenue: "$28,672.36",
+      revenue: "₹28,672.36",
       image: "/images/protct3.png",
     },
     {
       id: "#7712307",
-      name: "Dog Food, Chicken & Chicken Liver Recipe",
-      price: "$1,452.500",
+      name: "Fish oil",
+      price: "₹1,452.500",
       quantity: 1638,
       sale: 20,
       stock: "In stock",
-      revenue: "$28,672.36",
+      revenue: "₹28,672.36",
       image: "/images/protct1.png",
     },
     {
       id: "#7712308",
-      name: "Grain Free Dry Dog Food | Rachael Ray® Nutrish®",
-      price: "$1,452.500",
+      name: "AyuBody Bliss",
+      price: "₹1,452.500",
       quantity: 1638,
       sale: 20,
       stock: "Out of stock",
-      revenue: "$28,672.36",
+      revenue: "₹28,672.36",
       image: "/images/protct2.png",
     },
     {
       id: "#7712309",
-      name: "Weruva Pumpkin Patch Up! Pumpkin With Ginger",
-      price: "$1,452.500",
+      name: "Turmeriche Root",
+      price: "₹1,452.500",
       quantity: 1638,
       sale: 20,
       stock: "In stock",
-      revenue: "$28,672.36",
+      revenue: "₹28,672.36",
       image: "/images/protct3.png",
     },
     {
       id: "#7712310",
-      name: "Dog Food, Chicken & Chicken Liver Recipe",
-      price: "$1,452.500",
+      name: "ChandanSilky Soap",
+      price: "₹1,452.500",
       quantity: 1638,
       sale: 20,
       stock: "In stock",
-      revenue: "$28,672.36",
+      revenue: "₹28,672.36",
       image: "/images/protct1.png",
     },
     {
       id: "#7712311",
-      name: "Grain Free Dry Dog Food | Rachael Ray® Nutrish®",
-      price: "$1,452.500",
+      name: "Herbal Tea",
+      price: "₹1,452.500",
       quantity: 1638,
       sale: 20,
       stock: "Out of stock",
-      revenue: "$28,672.36",
+      revenue: "₹28,672.36",
       image: "/images/protct2.png",
     },
     {
       id: "#7712312",
-      name: "Weruva Pumpkin Patch Up! Pumpkin With Ginger",
-      price: "$1,452.500",
+      name: "Herbal Shampoo",
+      price: "₹1,452.500",
       quantity: 1638,
       sale: 20,
       stock: "In stock",
-      revenue: "$28,672.36",
+      revenue: "₹28,672.36",
       image: "/images/protct3.png",
     },
     {
       id: "#7712313",
-      name: "Dog Food, Chicken & Chicken Liver Recipe",
-      price: "$1,452.500",
+      name: "Herbal Conditioner",
+      price: "₹1,452.500",
       quantity: 1638,
       sale: 20,
       stock: "In stock",
-      revenue: "$28,672.36",
+      revenue: "₹28,672.36",
       image: "/images/protct1.png",
     },
     {
       id: "#7712314",
-      name: "Grain Free Dry Dog Food | Rachael Ray® Nutrish®",
-      price: "$1,452.500",
+      name: "Herbal Face Wash",
+      price: "₹1,452.500",
       quantity: 1638,
       sale: 20,
       stock: "Out of stock",
-      revenue: "$28,672.36",
+      revenue: "₹28,672.36",
       image: "/images/protct2.png",
     },
     {
       id: "#7712315",
-      name: "Weruva Pumpkin Patch Up! Pumpkin With Ginger",
-      price: "$1,452.500",
+      name: "Amla Root oil",
+      price: "₹1,452.500",
       quantity: 1638,
       sale: 20,
       stock: "In stock",
-      revenue: "$28,672.36",
+      revenue: "₹28,672.36",
       image: "/images/protct3.png",
     },
   ]);
@@ -291,23 +291,31 @@ export default function ProductList() {
                 <td className="px-4 ">{p.revenue}</td>
                 <td className="px-4 py-3">
                   <div className="flex items-center justify-center gap-3 h-full">
+                     
+                      <button
+                        className="text-blue-600 hover:text-blue-800 cursor-pointer"
+                        // onClick={() => handleView(p)}
+                      >
+                        
+                        <Link to="/products/detail">
+                        <Eye className="w-5 h-5" />
+                        </Link>
+                      </button>
+                    
+                    
                     <button
-                      className="text-blue-600 hover:text-blue-800"
-                      onClick={() => handleView(p)}
+                      className="text-green-600 hover:text-green-800 cursor-pointer"
+                      // onClick={() => handleEdit(p)}
                     >
-                      <Eye className="w-5 h-5" />
+                      <Link to="/products/edit">
+                        <Pencil className="w-5 h-4" />
+                      </Link>
                     </button>
                     <button
-                      className="text-green-600 hover:text-green-800"
-                      onClick={() => handleEdit(p)}
-                    >
-                      <Pencil className="w-5 h-5" />
-                    </button>
-                    <button
-                      className="text-red-600 hover:text-red-800"
+                      className="text-red-600 hover:text-red-800 cursor-pointer"
                       onClick={() => handleDelete(p.id)}
                     >
-                      <Trash2 className="w-5 h-5" />
+                      <Trash2 className="w-5 h-4" />
                     </button>
                   </div>
                 </td>
