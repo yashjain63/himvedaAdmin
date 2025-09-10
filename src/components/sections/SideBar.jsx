@@ -34,6 +34,16 @@ import ProductDetail from "../pages/Products/ProductDetail";
 import EditProduct from "../pages/Products/EditProduct";
 
 import CategoryList from "../pages/Categories/CategoryList";
+import AddCategory from "../pages/Categories/AddCategory";
+
+import Transaction from "../pages/Transactions/Transaction";
+
+import InvoiceList from "../pages/Invoice/InvoiceList";
+import InvoiceDetail from "../pages/Invoice/InvoiceDetail";
+import CreateInvoice from "../pages/Invoice/CreateInvoice";
+
+import UserList from "../pages/User/UserList";
+import ProfileSetting from "../pages/Setting/ProfileSetting";
 
 
 
@@ -80,16 +90,8 @@ const SidebarLayout = () => {
       icon: <Layers2 strokeWidth={1} />,
       children: [
         { name: "Category List", path: "/category/list", component: <CategoryList /> },
-        { name: "Add Category", path: "/category/add", component: <h2>Add Category Page</h2> },
-        
-      ],
-    },
-    {
-      name: "Inventory",
-      icon: <Package strokeWidth={1} />,
-      children: [
-        { name: "Warehouse List", path: "/inventory/warehouses", component: <h2>Warehouse List Page</h2> },
-        { name: "Received Order List", path: "/inventory/received", component: <h2>Received Order List Page</h2> },
+        { name: "Add Category", path: "/category/add", component: <AddCategory /> },
+
       ],
     },
     {
@@ -105,45 +107,44 @@ const SidebarLayout = () => {
     {
       name: "Transactions",
       icon: <BadgeDollarSign strokeWidth={1} />,
-      children: [
-        { name: "Mode", path: "/transactions/mode", component: <h2>Transaction Mode Page</h2> },
-      ],
+      path: "/transactions",
+      component: <Transaction />,
     },
     {
       name: "Invoice",
       icon: <ReceiptText strokeWidth={1} />,
       children: [
-        { name: "Invoice List", path: "/invoice/list", component: <h2>Invoice List Page</h2> },
-        { name: "Invoice Detail", path: "/invoice/detail", component: <h2>Invoice Detail Page</h2> },
-        { name: "Create Invoice", path: "/invoice/create", component: <h2>Create Invoice Page</h2> },
+        { name: "Invoice List", path: "/invoice/list", component: <InvoiceList/> },
+        { name: "Invoice Detail", path: "/invoice/detail", component: <InvoiceDetail/>  },
+        { name: "Create Invoice", path: "/invoice/create", component: <CreateInvoice/> },
       ],
     },
     {
       name: "Users",
       icon: <UserRound strokeWidth={1} />,
       children: [
-        { name: "User List", path: "/users/list", component: <h2>User List Page</h2> },
-        { name: "User Roles", path: "/users/roles", component: <h2>User Roles Page</h2> },
-        { name: "User Permissions", path: "/users/permissions", component: <h2>User Permissions Page</h2> },
+        { name: "User List", path: "/users/list", component: <UserList/> },
+        // { name: "User Roles", path: "/users/roles", component: <h2>User Roles Page</h2> },
+        // { name: "User Permissions", path: "/users/permissions", component: <h2>User Permissions Page</h2> },
       ],
     },
     {
       name: "Settings",
       icon: <Settings strokeWidth={1} />,
       children: [
-        { name: "General Settings", path: "/settings/general", component: <h2>General Settings Page</h2> },
-        { name: "Profile Settings", path: "/settings/profile", component: <h2>Profile Settings Page</h2> },
-        { name: "Security", path: "/settings/security", component: <h2>Security Page</h2> },
+        // { name: "General Settings", path: "/settings/general", component: <h2>General Settings Page</h2> },
+        { name: "Profile Settings", path: "/settings/profile", component: <ProfileSetting/> },
+        // { name: "Security", path: "/settings/security", component: <h2>Security Page</h2> },
       ],
     },
-    {
-      name: "Support",
-      icon: <MessageCircleQuestionMark strokeWidth={1} />,
-      children: [
-        { name: "Help Centre", path: "/support/help", component: <h2>Help Centre Page</h2> },
-        { name: "FAQ's", path: "/support/faq", component: <h2>FAQ Page</h2> },
-      ],
-    },
+    // {
+    //   name: "Support",
+    //   icon: <MessageCircleQuestionMark strokeWidth={1} />,
+    //   children: [
+    //     { name: "Help Centre", path: "/support/help", component: <h2>Help Centre Page</h2> },
+    //     { name: "FAQ's", path: "/support/faq", component: <h2>FAQ Page</h2> },
+    //   ],
+    // },
   ];
 
   // Toggle parent menu
@@ -272,6 +273,28 @@ const SidebarLayout = () => {
 
   // const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [isMessagesOpen, setIsMessagesOpen] = useState(false);
+
+
+  // Add refs
+  const notificationRef = useRef(null);
+  const messagesRef = useRef(null);
+
+  // Close dropdowns on outside click
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (notificationRef.current && !notificationRef.current.contains(e.target)) {
+        setIsNotificationOpen(false);
+      }
+      if (messagesRef.current && !messagesRef.current.contains(e.target)) {
+        setIsMessagesOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+
 
   return (
     <div className="h-screen bg-gray-50">
@@ -407,7 +430,7 @@ const SidebarLayout = () => {
           </div>
 
           {/* Right section */}
-          <div className="flex items-center gap-4 md:gap-6 flex-shrink-0">
+          <div className="flex items-center gap-4 md:gap-4 flex-shrink-0">
             {/* Mobile search icon */}
             {isMobile && (
               <FaSearch
@@ -418,36 +441,43 @@ const SidebarLayout = () => {
 
 
 
-{/* Notification Icon */}
-      <button onClick={() => {
-        setIsNotificationOpen(!isNotificationOpen);
-        setIsMessagesOpen(false); // close messages if open
-      }}>
-        <Bell className="text-gray-600 text-xl cursor-pointer" strokeWidth={1} />
-      </button>
+            {/* Notification Icon */}
+            <button onClick={() => {
+              setIsNotificationOpen(!isNotificationOpen);
+              setIsMessagesOpen(false); // close messages if open
+            }}>
+              <Bell className="text-gray-600 text-xl cursor-pointer" strokeWidth={1} />
+            </button>
 
-      {/* Messages Icon */}
-      <button onClick={() => {
-        setIsMessagesOpen(!isMessagesOpen);
-        setIsNotificationOpen(false); // close notifications if open
-      }}>
-        <MessageSquare className="text-gray-600 w-5.5 h-5.5 cursor-pointer" strokeWidth={1} />
-      </button>
+            {/* Messages Icon */}
+            <button onClick={() => {
+              setIsMessagesOpen(!isMessagesOpen);
+              setIsNotificationOpen(false); // close notifications if open
+            }}>
+              <MessageSquare className="text-gray-600 w-5.5 h-5.5 cursor-pointer" strokeWidth={1} />
+            </button>
 
-      {/* Dropdowns */}
-      <Dropdown
-        open={isNotificationOpen}
-        title="Notifications"
-        type="notifications"
-        items={notifications}
-      />
 
-      <Dropdown
-        open={isMessagesOpen}
-        title="Messages"
-        type="messages"
-        items={messages}
-      />
+            {/* Notification Dropdown */}
+            <Dropdown
+              ref={notificationRef}
+              open={isNotificationOpen}
+              title="Notifications"
+              type="notifications"
+              items={notifications}
+              onClose={() => setIsNotificationOpen(false)}
+            />
+
+            {/* Messages Dropdown */}
+            <Dropdown
+              ref={messagesRef}
+              open={isMessagesOpen}
+              title="Messages"
+              type="messages"
+              items={messages}
+              onClose={() => setIsMessagesOpen(false)}
+            />
+
 
 
             {/* if needed put here from bottom */}
@@ -458,7 +488,7 @@ const SidebarLayout = () => {
                 className="text-gray-600 cursor-pointer w-7 h-7"
                 strokeWidth={1}
               />
-              
+
             </div>
           </div>
         </header>
