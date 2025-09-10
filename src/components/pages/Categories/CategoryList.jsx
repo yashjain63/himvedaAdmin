@@ -171,12 +171,12 @@ export default function ProductList() {
     <div className="p-6 bg-gray-50 min-h-screen">
       {/* Top Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-        <h1 className="text-3xl font-semibold">Product List</h1>
+        <h1 className="text-3xl font-semibold">Category List</h1>
 
         {/* Breadcrumb */}
         <div className="text-sm text-gray-500 mt-2 sm:mt-0">
-          <span>Products</span> &gt;{" "}
-          <span className="text-gray-800 font-medium">Product List</span>
+          <span>Categories</span> &gt;{" "}
+          <span className="text-gray-800 font-medium">Category List</span>
         </div>
       </div>
 

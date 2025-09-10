@@ -110,8 +110,9 @@ const SidebarLayout = () => {
     {
       name: "Transactions",
       icon: <BadgeDollarSign strokeWidth={1} />,
-      path: "/transactions",
-      component: <Transaction />,
+      children: [
+        { name: "Transaction List", path: "/transactions", component: <Transaction /> },
+      ],
     },
     {
       name: "Invoice",

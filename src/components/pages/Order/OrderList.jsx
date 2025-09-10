@@ -11,7 +11,7 @@ export default function ProductList() {
             name: "GlowRoot Base",
             price: "₹1,452.500",
             quantity: 1638,
-            payment: 20,
+            payment: "COD",
             status: "Success",
             tracking: "Track",
             image: "/images/protct1.png",
@@ -21,7 +21,7 @@ export default function ProductList() {
             name: "Bhringa Root",
             price: "₹1,452.500",
             quantity: 1638,
-            payment: 20,
+            payment: "UPI",
             status: "Pending",
             tracking: "Track",
             image: "/images/protct2.png",
@@ -31,7 +31,7 @@ export default function ProductList() {
             name: "Amla Root Therapy",
             price: "₹1,452.500",
             quantity: 1638,
-            payment: 20,
+            payment: "Card",
             status: "Pending",
             tracking: "Track",
             image: "/images/protct3.png",
@@ -41,7 +41,7 @@ export default function ProductList() {
             name: "Tulsi Touch",
             price: "₹1,452.500",
             quantity: 1638,
-            payment: 20,
+            payment: "COD",
             status: "Cancelled",
             tracking: "Track",
             image: "/images/protct1.png",
@@ -51,7 +51,7 @@ export default function ProductList() {
             name: "Haldi Heal",
             price: "₹1,452.500",
             quantity: 1638,
-            payment: 20,
+            payment: "Card",
             status: "Success",
             tracking: "Track",
             image: "/images/protct2.png",
@@ -61,7 +61,7 @@ export default function ProductList() {
             name: "Keshamrit oil",
             price: "₹1,452.500",
             quantity: 1638,
-            payment: 20,
+            payment: "Card",
             status: "Success",
             tracking: "Track",
             image: "/images/protct3.png",
@@ -71,7 +71,7 @@ export default function ProductList() {
             name: "Fish oil",
             price: "₹1,452.500",
             quantity: 1638,
-            payment: 20,
+            payment: "COD",
             status: "Pending",
             tracking: "Track",
             image: "/images/protct1.png",
@@ -81,7 +81,7 @@ export default function ProductList() {
             name: "AyuBody Bliss",
             price: "₹1,452.500",
             quantity: 1638,
-            payment: 20,
+            payment: "UPI",
             status: "Success",
             tracking: "Track",
             image: "/images/protct2.png",
@@ -91,7 +91,7 @@ export default function ProductList() {
             name: "Turmeriche Root",
             price: "₹1,452.500",
             quantity: 1638,
-            payment: 20,
+            payment: "UPI",
             status: "Pending",
             tracking: "Track",
             image: "/images/protct3.png",
@@ -101,7 +101,7 @@ export default function ProductList() {
             name: "ChandanSilky Soap",
             price: "₹1,452.500",
             quantity: 1638,
-            payment: 20,
+            payment: "COD",
             status: "Pending",
             tracking: "Track",
             image: "/images/protct1.png",
@@ -111,7 +111,7 @@ export default function ProductList() {
             name: "Herbal Tea",
             price: "₹1,452.500",
             quantity: 1638,
-            payment: 20,
+            payment: "Card",
             status: "Success",
             tracking: "Track",
             image: "/images/protct2.png",
@@ -121,7 +121,7 @@ export default function ProductList() {
             name: "Herbal Shampoo",
             price: "₹1,452.500",
             quantity: 1638,
-            payment: 20,
+            payment: "Card",
             status: "Success",
             tracking: "Track",
             image: "/images/protct3.png",
@@ -131,7 +131,7 @@ export default function ProductList() {
             name: "Herbal Conditioner",
             price: "₹1,452.500",
             quantity: 1638,
-            payment: 20,
+            payment: "COD",
             status: "Cancelled",
             tracking: "Track",
             image: "/images/protct1.png",
@@ -141,7 +141,7 @@ export default function ProductList() {
             name: "Herbal Face Wash",
             price: "₹1,452.500",
             quantity: 1638,
-            payment: 20,
+            payment: "COD",
             status: "Success",
             tracking: "Track",
             image: "/images/protct2.png",
@@ -151,7 +151,7 @@ export default function ProductList() {
             name: "Amla Root oil",
             price: "₹1,452.500",
             quantity: 1638,
-            payment: 20,
+            payment: "UPI",
             status: "Pending",
             tracking: "Track",
             image: "/images/protct3.png",
@@ -218,12 +218,12 @@ export default function ProductList() {
 
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
                     {/* Add New Button */}
-                    <Link to="/orders/add">
+                    {/* <Link to="/orders/add">
                         <button className="flex items-center text-[15px] justify-center gap-2 border border-red-900 text-red-900 px-5 py-2 rounded-lg hover:bg-red-900 hover:text-white transition">
                             <Plus className="w-5 h-5" />
                             Add new
                         </button>
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
 

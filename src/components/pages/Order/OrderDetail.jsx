@@ -4,16 +4,16 @@ import { Truck } from "lucide-react";
 const OrderDetail = () => {
   const order = {
     id: "#192847",
-    date: "20 Nov 2023",
-    total: "₹948.50",
-    subtotal: "₹70.13",
+    date: "20 Sept 2025",
+    total: "₹171.41",
+    subtotal: "₹151.41",
     shipping: "₹10.00",
-    tax: "₹5.00",
-    finalTotal: "₹90.58",
+    tax: "₹10.00",
+    finalTotal: "₹171.41",
     address: "3517 W. Gray St. Utica, Pennsylvania 57867",
     payment:
-      "Pay on Delivery (Cash/Card). Cash on delivery (COD) available. Card/Net banking acceptance subject to device availability.",
-    deliveryDate: "20 Nov 2023",
+      "Pay on Delivery (Cash/Card).",
+    deliveryDate: "25 Sept 2025",
     items: [
       {
         id: 1,
@@ -51,7 +51,7 @@ const OrderDetail = () => {
           {/* All Items */}
           <div className="bg-white rounded-2xl shadow p-4 flex-1">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="font-semibold text-md">All item</h2>
+              <h2 className="font-semibold text-md">All Items</h2>
               {/* <button className="text-gray-500 text-sm">Sort ▾</button> */}
             </div>
 
@@ -158,7 +158,7 @@ const OrderDetail = () => {
             <p className="text-green-600 font-medium mb-3">
               {order.deliveryDate}
             </p>
-            <button className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-red-900 text-red-900 hover:bg-red-900 hover:text-white rounded-md">
+            <button className="cursor-pointer w-full flex items-center justify-center gap-2 px-4 py-2 border border-red-900 text-red-900 hover:bg-red-900 hover:text-white rounded-md">
               <Truck/> Track order
             </button>
           </div>
