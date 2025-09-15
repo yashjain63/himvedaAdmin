@@ -235,7 +235,7 @@ export default function ProductList() {
 
           {/* Add New Button */}
           <Link to="/products/add">
-            <button className="flex items-center text-[15px] justify-center gap-2 border border-red-900 text-red-900 px-5 py-2 rounded-lg hover:bg-red-900 hover:text-white transition">
+            <button className="flex items-center text-[15px] cursor-pointer justify-center gap-2 border border-red-900 text-red-900 px-5 py-2 rounded-lg hover:bg-red-900 hover:text-white transition">
               <Plus className="w-5 h-5" />
               Add new
             </button>

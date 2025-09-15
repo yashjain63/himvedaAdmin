@@ -62,17 +62,16 @@ export default function CreateInvoice() {
   };
 
   return (
-    <div className="py-3 px-3">
-      <div className="max-w-7xl mx-auto p-4 sm:p-6 bg-white shadow rounded-xl space-y-6">
-        {/* <h1 className="text-3xl font-semibold mb-4">Create Invoice</h1> */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-          <h1 className="text-3xl font-semibold">Create Invoice</h1>
-          <div className="text-sm text-gray-500 mt-2 sm:mt-0">
-            <span>Invoices</span> &gt;{" "}
-            <span className="text-gray-800 font-medium">Create Invoice</span>
-          </div>
+    <div className="py-5 px-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+        <h1 className="text-3xl font-semibold">Create Invoice</h1>
+        <div className="text-sm text-gray-500 mt-2 sm:mt-0">
+          <span>Invoices</span> &gt;{" "}
+          <span className="text-gray-800 font-medium">Create Invoice</span>
         </div>
-
+      </div>
+      <div className="max-w-7xl mx-auto p-4 sm:p-6 bg-white shadow rounded-md space-y-6">
+        {/* <h1 className="text-3xl font-semibold mb-4">Create Invoice</h1> */}
         {/*Top fields */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-4 gap-4 sm:gap-6">
           <div>

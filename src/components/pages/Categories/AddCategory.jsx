@@ -40,7 +40,7 @@ export default function AddCategory() {
     <div className="p-6 bg-gray-50 min-h-screen">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
-        <h2 className="text-2xl font-bold">Add Category</h2>
+        <h2 className="text-3xl font-semibold">Add Category</h2>
         <div className="text-sm text-gray-500 mt-2 sm:mt-0">
           <span>Category</span> &gt;{" "}
           <span className="text-gray-800 font-medium">Add category</span>

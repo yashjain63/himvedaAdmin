@@ -149,7 +149,7 @@ export default function OrderList() {
     );
 
     // Limit orders shown by "entries" dropdown
-    const displayedOrders =   entries === "all" ? filteredOrders  : filteredOrders .slice(0, entries);
+    const displayedOrders = entries === "all" ? filteredOrders : filteredOrders.slice(0, entries);
 
     // Handlers
     const handleView = (order) => {
@@ -267,9 +267,11 @@ export default function OrderList() {
                                     </span>
                                 </td>
                                 <td className="px-4 ">
-                                    <span className="text-blue-600 font-semibold hover:text-blue-800 cursor-pointer">
-                                        {p.tracking}
-                                    </span>
+                                    <Link to="/orders/tracking">
+                                        <span className="text-blue-600 font-semibold hover:text-blue-800 cursor-pointer">
+                                            {p.tracking}
+                                        </span>
+                                    </Link>
                                 </td>
                                 <td className="px-4 py-3">
                                     <div className="flex mr-5 justify-center gap-3 h-full">

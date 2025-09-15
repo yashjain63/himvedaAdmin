@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const OrderTracking = () => {
   const timeline = [
@@ -41,10 +42,19 @@ const OrderTracking = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto p-6 space-y-6">
+    <div className="max-w-6xl mx-auto p-6 sm:p-0 sm:py-5 space-y-6">
       {/* Header */}
-      <div className="flex justify-between text-sm text-gray-500">
+      {/* <div className="flex justify-between text-sm text-gray-500">
         <p className="font-medium">Dashboard &gt; Order &gt; Track Order</p>
+      </div> */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+        <h1 className="text-3xl font-semibold">Order Tracking</h1>
+
+        {/* Breadcrumb */}
+        <div className="text-sm text-gray-500 mt-2 sm:mt-0">
+          <span>Orders</span> &gt;{" "}
+          <span className="text-gray-800 font-medium">Order Tracking</span>
+        </div>
       </div>
 
       {/* Product Info */}
@@ -55,7 +65,7 @@ const OrderTracking = () => {
           className="w-40 h-40 object-contain rounded-lg border"
         />
         <div className="flex-1 space-y-2">
-          <h2 className="text-lg font-semibold">Pouch Pocket Hoodie Orange</h2>
+          <h2 className="text-lg font-semibold">Baby Oil</h2>
           <p className="text-sm text-gray-500">
             Order ID: <span className="font-medium">#192847</span>
           </p>
@@ -64,12 +74,16 @@ const OrderTracking = () => {
           <p className="text-sm text-gray-500">Quantity: 1</p>
 
           <div className="flex gap-3 pt-2">
-            <button className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg">
-              View shop
-            </button>
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-lg">
-              View product
-            </button>
+            <Link to="/products/list">
+              <button className="px-4 py-2 border border-red-900 text-red-900 hover:bg-red-800 hover:text-white cursor-pointer rounded-lg">
+                View shop
+              </button>
+            </Link>
+            {/* <Link to="/products/list">
+              <button className="px-4 py-2 border border-red-900 text-red-900 hover:bg-red-800 hover:text-white cursor-pointer rounded-lg">
+                View product
+              </button>
+            </Link> */}
           </div>
         </div>
       </div>
@@ -86,9 +100,8 @@ const OrderTracking = () => {
             (step, i) => (
               <div key={i} className="flex-1 flex flex-col items-center">
                 <div
-                  className={`w-8 h-8 flex items-center justify-center rounded-full border-2 ${
-                    i < 3 ? "bg-blue-600 border-blue-600 text-white" : "bg-gray-200 border-gray-300 text-gray-400"
-                  }`}
+                  className={`w-8 h-8 flex items-center justify-center rounded-full border-2 ${i < 3 ? "bg-green-600 border-green-600 text-white" : "bg-gray-200 border-gray-300 text-gray-400"
+                    }`}
                 >
                   ✓
                 </div>

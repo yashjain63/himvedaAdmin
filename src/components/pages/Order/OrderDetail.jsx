@@ -1,5 +1,6 @@
 import React from "react";
 import { Truck } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const OrderDetail = () => {
   const order = {
@@ -168,9 +169,11 @@ const OrderDetail = () => {
             <p className="text-green-600 font-medium mb-3">
               {order.deliveryDate}
             </p>
-            <button className="cursor-pointer w-full flex items-center justify-center gap-2 px-4 py-2 border border-red-900 text-red-900 hover:bg-red-900 hover:text-white rounded-md">
-              <Truck /> Track order
-            </button>
+            <Link to="/orders/tracking">
+              <button className="cursor-pointer w-full flex items-center justify-center gap-2 px-4 py-2 border border-red-900 text-red-900 hover:bg-red-900 hover:text-white rounded-md">
+                <Truck /> Track order
+              </button>
+            </Link>
           </div>
         </div>
       </div>
