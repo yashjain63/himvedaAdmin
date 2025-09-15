@@ -297,14 +297,14 @@ export default function Invoice() {
           Download PDF
         </button>
 
-        <button
+        {/* <button
           onClick={handleSubmit}
           disabled={submitting}
           className="px-6 py-2 rounded-lg text-white"
           style={{ backgroundColor: "#4CAF50", opacity: submitting ? 0.6 : 1 }}
         >
           {submitting ? "Submitting..." : "Submit"}
-        </button>
+        </button> */}
       </div>
 
       {message && (
