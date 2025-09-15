@@ -164,7 +164,9 @@ export default function ProductList() {
   );
 
   // Limit products shown by "entries" dropdown
-  const displayedProducts = filteredProducts.slice(0, entries);
+  // const displayedProducts = filteredProducts.slice(0, entries);
+  const displayedProducts =
+    entries === "all" ? filteredProducts : filteredProducts.slice(0, entries);
 
   // Handlers
   const handleView = (product) => {
@@ -207,11 +209,11 @@ export default function ProductList() {
           <select
             className="border border-gray-300 rounded-md outline-none px-2 py-1 text-sm"
             value={entries}
-            onChange={(e) => setEntries(Number(e.target.value))}
+            onChange={(e) => setEntries(e.target.value === "all" ? "all" : Number(e.target.value))}
           >
             <option value={5}>5</option>
             <option value={15}>15</option>
-            <option value={50}>50</option>
+            <option value="all">All</option>
           </select>
           <span>Products</span>
         </div>
@@ -278,11 +280,10 @@ export default function ProductList() {
                 <td className="px-4 py-3">{p.sale}</td>
                 <td className="px-4 py-3">
                   <span
-                    className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      p.stock.toLowerCase() === "in stock"
+                    className={`px-2 py-1 rounded-full text-xs font-medium ${p.stock.toLowerCase() === "in stock"
                         ? "bg-green-100 text-green-700"
                         : "bg-red-100 text-red-700"
-                    }`}
+                      }`}
                   >
                     {p.stock}
                   </span>
@@ -290,21 +291,21 @@ export default function ProductList() {
                 <td className="px-4 ">{p.revenue}</td>
                 <td className="px-4 py-3">
                   <div className="flex items-center justify-center gap-3 h-full">
-                     
-                      <button
-                        className="text-blue-600 hover:text-blue-800 cursor-pointer"
-                        // onClick={() => handleView(p)}
-                      >
-                        
-                        <Link to="/products/detail">
+
+                    <button
+                      className="text-blue-600 hover:text-blue-800 cursor-pointer"
+                    // onClick={() => handleView(p)}
+                    >
+
+                      <Link to="/products/detail">
                         <Eye className="w-5 h-5" />
-                        </Link>
-                      </button>
-                    
-                    
+                      </Link>
+                    </button>
+
+
                     <button
                       className="text-green-600 hover:text-green-800 cursor-pointer"
-                      // onClick={() => handleEdit(p)}
+                    // onClick={() => handleEdit(p)}
                     >
                       <Link to="/products/edit">
                         <Pencil className="w-5 h-4" />

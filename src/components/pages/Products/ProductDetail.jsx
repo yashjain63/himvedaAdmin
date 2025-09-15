@@ -100,11 +100,16 @@ const ProductDetail = () => {
 
   return (
     <div className="w-full pt-5">
-      <div className="ml-[93%]">
-        <Link className="flex mb-5 hover:text-red-900" to="/products/edit">
-          <Pencil className="w-5 h-4 mt-1 " /><span className="ml-2">Edit</span>
+      <div className="flex justify-end w-full">
+        <Link
+          to="/products/edit"
+          className="flex items-center gap-2 mb-5 hover:text-red-900"
+        >
+          <Pencil className="w-5 h-5" />
+          <span>Edit</span>
         </Link>
       </div>
+
       <div className="max-w-[94%] mx-auto px-4 sm:px-6 lg:px-0 flex flex-col gap-10">
         {/* Product Section */}
         <div className="flex flex-col lg:flex-row gap-10">

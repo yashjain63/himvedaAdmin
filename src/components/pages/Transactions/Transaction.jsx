@@ -91,10 +91,11 @@ export default function TransactionList() {
   const paymentMethods = ["All Methods", "Amex", "Master card", "Paypal", "Visa"];
 
   return (
-    <div className="p-4 md:p-8 bg-gray-50 min-h-screen">
+    <div className="p-6 bg-gray-50 min-h-screen">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
-        <h1 className="text-2xl md:text-3xl font-semibold">Transactions List</h1>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+        <h1 className="text-3xl font-semibold">Transactions List</h1>
+
         <div className="text-sm text-gray-500 mt-2 sm:mt-0">
           <span>Transactions</span> &gt;{" "}
           <span className="text-gray-800 font-medium">Transactions List</span>
@@ -116,39 +117,44 @@ export default function TransactionList() {
       </div>
 
       {/* Desktop Table */}
-      <div className="hidden md:block overflow-x-auto bg-white rounded-xl shadow">
-        <table className="w-full text-sm">
-          <thead className="bg-gray-100 text-gray-700">
+      <div className="overflow-x-auto bg-white shadow-md rounded-lg">
+        <table className="w-full text-sm text-left">
+          <thead className="bg-gray-100 text-gray-600 text-sm">
             <tr>
-              <th className="p-3 text-left">Transaction ID</th>
-              <th className="p-3 text-left">Paid</th>
-              <th className="p-3 text-left">Method</th>
-              <th className="p-3 text-left">Date</th>
-              <th className="p-3 text-left">Action</th>
+              <th className="px-4 py-3">Transaction ID</th>
+              <th className="px-4 py-3">Paid</th>
+              <th className="px-4 py-3">Method</th>
+              <th className="px-4 py-3">Date</th>
+              {/* <th className="p-3 text-left">Action</th> */}
             </tr>
           </thead>
           <tbody>
             {filteredTransactions.map((t, idx) => (
               <tr
                 key={idx}
-                className="border-t hover:bg-gray-50 transition"
+                className="border-t hover:bg-gray-50 align-middle transition"
               >
-                <td className="p-3">{t.id}</td>
-                <td className="p-3 font-medium">₹{t.paid.toFixed(2)}</td>
-                <td className="p-3 flex items-center gap-2">
+                <td className="px-4 py-3">{t.id}</td>
+
+                <td className="px-4 py-3">₹{t.paid.toFixed(2)}</td>
+
+                <td className="px-4 py-3 flex items-center gap-3">
                   <img
                     src={t.method.logo}
                     alt={t.method.name}
-                    className="w-6 h-6 object-contain"
+                    className="w-6 h-6 rounded-md object-cover"
                   />
-                  {t.method.name}
+                  <span className="truncate max-w-[200px] font-medium">
+                    {t.method.name}
+                  </span>
                 </td>
-                <td className="p-3">{t.date}</td>
-                <td className="p-3">
+
+                <td className="px-4 py-3">{t.date}</td>
+                {/* <td className="p-3">
                   <button className="px-4 py-1 text-sm rounded-lg border border-red-900 text-red-900 hover:bg-red-900 hover:text-white transition">
                     Details
                   </button>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>
@@ -335,7 +341,7 @@ export default function TransactionList() {
 //                 </td>
 //                 <td className="p-3">{t.date}</td>
 //                 <td className="p-3">
-//                   <button className="px-4 py-1 text-sm rounded-lg border border-red-900 text-red-900 hover:bg-red-900 cursor-pointer hover:text-white transition"> 
+//                   <button className="px-4 py-1 text-sm rounded-lg border border-red-900 text-red-900 hover:bg-red-900 cursor-pointer hover:text-white transition">
 //                     Details
 //                   </button>
 //                 </td>

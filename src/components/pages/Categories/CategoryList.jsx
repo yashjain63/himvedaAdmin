@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function ProductList() {
   const [search, setSearch] = useState("");
   const [entries, setEntries] = useState(5);
-  const [products, setProducts] = useState([
+  const [Categories, setCategories] = useState([
    {
       id: "#7712301",
       name: "Foundation",
@@ -143,19 +143,19 @@ export default function ProductList() {
     },
   ]);
 
-  // Filter products by search
-  const filteredProducts = products.filter((p) =>
+  // Filter Categories by search
+  const filteredCategories = Categories.filter((p) =>
     p.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Limit products shown by "entries" dropdown
-  const displayedProducts = filteredProducts.slice(0, entries);
+  // Limit Categories shown by "entries" dropdown
+  const displayedCategories = entries === "all" ? filteredCategories : filteredCategories.slice(0, entries);
 
   // Handlers
   const handleEdit = (product) => {
     const newName = prompt("Edit product name:", product.name);
     if (newName) {
-      setProducts((prev) =>
+      setCategories((prev) =>
         prev.map((p) => (p.id === product.id ? { ...p, name: newName } : p))
       );
     }
@@ -163,7 +163,7 @@ export default function ProductList() {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
-      setProducts((prev) => prev.filter((p) => p.id !== id));
+      setCategories((prev) => prev.filter((p) => p.id !== id));
     }
   };
 
@@ -188,17 +188,17 @@ export default function ProductList() {
           <select
             className="border border-gray-300 rounded-md outline-none px-2 py-1 text-sm"
             value={entries}
-            onChange={(e) => setEntries(Number(e.target.value))}
+            onChange={(e) => setEntries(e.target.value === "all" ? "all" : Number(e.target.value))}
           >
             <option value={5}>5</option>
             <option value={15}>15</option>
-            <option value={50}>50</option>
+            <option value="all">All</option>
           </select>
-          <span>Products</span>
+          <span>Categories</span>
         </div>
 
         {/* Add New Button */}
-        <Link to="/products/add">
+        <Link to="/category/add">
           <button className="flex items-center text-[15px] justify-center gap-2 border border-red-900 text-red-900 px-5 py-2 rounded-lg hover:bg-red-900 hover:text-white transition">
             <Plus className="w-5 h-5" />
             Add new
@@ -220,7 +220,7 @@ export default function ProductList() {
             </tr>
           </thead>
           <tbody>
-            {displayedProducts.map((p, index) => (
+            {displayedCategories.map((p, index) => (
               <tr
                 key={index}
                 className="border-t hover:bg-gray-50 transition"
@@ -257,13 +257,13 @@ export default function ProductList() {
                 </td>
               </tr>
             ))}
-            {displayedProducts.length === 0 && (
+            {displayedCategories.length === 0 && (
               <tr>
                 <td
                   colSpan="8"
                   className="text-left text-gray-500 py-6 italic"
                 >
-                  No products found
+                  No Categories found
                 </td>
               </tr>
             )}
@@ -273,7 +273,7 @@ export default function ProductList() {
 
       {/* Responsive Cards for Mobile */}
       <div className="md:hidden space-y-4">
-        {displayedProducts.map((p, index) => (
+        {displayedCategories.map((p, index) => (
           <div
             key={index}
             className="bg-white rounded-lg shadow-md p-4 space-y-3"

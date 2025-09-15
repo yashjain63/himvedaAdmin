@@ -16,6 +16,8 @@ import {
   MessageCircleQuestionMark,
   Bell,
   MessageSquare,
+  Search,
+  Menu
 } from "lucide-react";
 import { HiMenu } from "react-icons/hi";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
@@ -38,6 +40,8 @@ import AddCategory from "../pages/Categories/AddCategory";
 
 import OrderList from "../pages/Order/OrderList";
 import OrderDetail from "../pages/Order/OrderDetail";
+import OrderTracking from "../pages/Order/OrderTracking";
+import ReturningOrderList from "../pages/Order/ReturningOrderList";
 
 import Transaction from "../pages/Transactions/Transaction";
 
@@ -103,8 +107,8 @@ const SidebarLayout = () => {
       children: [
         { name: "Order List", path: "/orders/list", component: <OrderList /> },
         { name: "Order Detail", path: "/orders/detail", component: <OrderDetail /> },
-        { name: "Order Tracking", path: "/orders/tracking", component: <h2>Order Tracking Page</h2> },
-        { name: "Returning Orders List", path: "/orders/returns", component: <h2>Returning Orders Page</h2> },
+        { name: "Order Tracking", path: "/orders/tracking", component: <OrderTracking /> },
+        { name: "Returning Orders List", path: "/orders/returns", component: <ReturningOrderList/> },
       ],
     },
     {
@@ -118,16 +122,16 @@ const SidebarLayout = () => {
       name: "Invoice",
       icon: <ReceiptText strokeWidth={1} />,
       children: [
-        { name: "Invoice List", path: "/invoice/list", component: <InvoiceList/> },
-        { name: "Invoice Detail", path: "/invoice/detail", component: <InvoiceDetail/>  },
-        { name: "Create Invoice", path: "/invoice/create", component: <CreateInvoice/> },
+        { name: "Invoice List", path: "/invoice/list", component: <InvoiceList /> },
+        { name: "Invoice Detail", path: "/invoice/detail", component: <InvoiceDetail /> },
+        { name: "Create Invoice", path: "/invoice/create", component: <CreateInvoice /> },
       ],
     },
     {
       name: "Users",
       icon: <UserRound strokeWidth={1} />,
       children: [
-        { name: "User List", path: "/users/list", component: <UserList/> },
+        { name: "User List", path: "/users/list", component: <UserList /> },
         // { name: "User Roles", path: "/users/roles", component: <h2>User Roles Page</h2> },
         // { name: "User Permissions", path: "/users/permissions", component: <h2>User Permissions Page</h2> },
       ],
@@ -137,7 +141,7 @@ const SidebarLayout = () => {
       icon: <Settings strokeWidth={1} />,
       children: [
         // { name: "General Settings", path: "/settings/general", component: <h2>General Settings Page</h2> },
-        { name: "Profile Settings", path: "/settings/profile", component: <ProfileSetting/> },
+        { name: "Profile Settings", path: "/settings/profile", component: <ProfileSetting /> },
         // { name: "Security", path: "/settings/security", component: <h2>Security Page</h2> },
       ],
     },
@@ -416,7 +420,7 @@ const SidebarLayout = () => {
                 onClick={() => setIsOpen(true)}
                 className="md:hidden p-2 rounded-md hover:bg-gray-200"
               >
-                <HiMenu className="text-2xl text-gray-700" />
+                <Menu className="text-gray-600 w-5.5 h-5.5 cursor-pointer" strokeWidth={1.5} />
               </button>
             )}
 
@@ -428,22 +432,37 @@ const SidebarLayout = () => {
                   placeholder="Search here..."
                   className="bg-gray-100 outline-none px-2 w-full"
                 />
-                <FaSearch className="text-gray-500 w-4 h-4" />
+                <Search className="text-gray-500 w-4 h-4"/> 
               </div>
             )}
           </div>
 
           {/* Right section */}
           <div className="flex items-center gap-4 md:gap-4 flex-shrink-0">
-            {/* Mobile search icon */}
+
+
             {isMobile && (
-              <FaSearch
-                className="text-gray-600 w-4.5 h-4.5 text-xl cursor-pointer"
-                onClick={() => setShowMobileSearch(true)}
-              />
+              <>
+                {showMobileSearch ? (
+                  <div className="flex items-center bg-gray-100 rounded-md px-3 py-1 flex-1">
+                    <input
+                      type="text"
+                      placeholder="Search here..."
+                      className="bg-gray-100 outline-none px-2 w-full"
+                    />
+                    <button onClick={() => setShowMobileSearch(false)} className="ml-2">
+                      <X className="text-gray-600 w-5 h-5" />
+                    </button>
+                  </div>
+                ) : (
+                  <Search
+                    className="text-gray-600 text-xl cursor-pointer"
+                    strokeWidth={1}
+                    onClick={() => setShowMobileSearch(true)}
+                  />
+                )}
+              </>
             )}
-
-
 
             {/* Notification Icon */}
             <button onClick={() => {
@@ -490,7 +509,7 @@ const SidebarLayout = () => {
             <div className="relative">
               <CircleUserRound
                 className="text-gray-600 cursor-pointer w-7 h-7"
-                strokeWidth={1}
+                strokeWidth={0.7}
               />
 
             </div>

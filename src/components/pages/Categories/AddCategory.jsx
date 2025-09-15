@@ -92,8 +92,8 @@ export default function AddCategory() {
         <div className="bg-white p-6 rounded-lg shadow-md space-y-5">
           {/* Upload Image */}
           <div>
-            <label className="block font-medium text-gray-700 mb-2">
-              Upload image
+            <label className="block text-[16px] font-bold mb-1">
+              Upload Icon
             </label>
             <div
               className={`flex flex-col items-center justify-center border-2 border-dashed rounded-lg p-6 text-gray-400 cursor-pointer transition ${
@@ -117,7 +117,7 @@ export default function AddCategory() {
               />
               <label
                 htmlFor="fileUpload"
-                className="mt-3 px-4 py-2 bg-red-900 text-white hover:bg-red-950 text-sm rounded-md border border-red-900 cursor-pointer"
+                className="mt-3 px-4 py-2 bg-red-900 text-white hover:bg-white hover:text-red-900 text-sm rounded-md border border-red-900 cursor-pointer"
               >
                 Browse File
               </label>

@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Plus, Eye, Pencil, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
-export default function OrderList() {
+
+export default function ReturningOrderList() {
     const [search, setSearch] = useState("");
     const [entries, setEntries] = useState(5);
     const [orders, setOrders] = useState([
@@ -31,15 +32,6 @@ export default function OrderList() {
             quantity: 1638,
             payment: "Card",
             status: "Pending",
-            tracking: "Track",
-        },
-        {
-            order_id: "#6612204",
-            name: "Tanmay Singh",
-            price: "₹1,452.500",
-            quantity: 1638,
-            payment: "COD",
-            status: "Cancelled",
             tracking: "Track",
         },
         {
@@ -115,15 +107,6 @@ export default function OrderList() {
             tracking: "Track",
         },
         {
-            order_id: "#6612213",
-            name: "Puja Kumari",
-            price: "₹1,452.500",
-            quantity: 1638,
-            payment: "COD",
-            status: "Cancelled",
-            tracking: "Track",
-        },
-        {
             order_id: "#6612214",
             name: "Rahul raja",
             price: "₹1,452.500",
@@ -149,7 +132,8 @@ export default function OrderList() {
     );
 
     // Limit orders shown by "entries" dropdown
-    const displayedOrders =   entries === "all" ? filteredOrders  : filteredOrders .slice(0, entries);
+    const displayedOrders = entries === "all" ? filteredOrders : filteredOrders.slice(0, entries);
+
 
     // Handlers
     const handleView = (order) => {
@@ -175,12 +159,12 @@ export default function OrderList() {
         <div className="p-6 bg-gray-50 min-h-screen">
             {/* Top Bar */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                <h1 className="text-3xl font-semibold">Orders List</h1>
+                <h1 className="text-3xl font-semibold">Returning Orders List</h1>
 
                 {/* Breadcrumb */}
                 <div className="text-sm text-gray-500 mt-2 sm:mt-0">
                     <span>Orders</span> &gt;{" "}
-                    <span className="text-gray-800 font-medium">Orders List</span>
+                    <span className="text-gray-800 font-medium">Returning Orders List</span>
                 </div>
             </div>
 
@@ -192,7 +176,8 @@ export default function OrderList() {
                     <select
                         className="border border-gray-300 rounded-md outline-none px-2 py-1 text-sm"
                         value={entries}
-                        onChange={(e) => setEntries(e.target.value === "all" ? "all" : Number(e.target.value))}
+                        onChange={(e) => setEntries(e.target.value === "all" ? "all" : Number(e.target.value))
+                        }
                     >
                         <option value={5}>5</option>
                         <option value={15}>15</option>
@@ -212,7 +197,7 @@ export default function OrderList() {
                 </div>
             </div>
 
-            {/* Order Table */}
+            {/* Product Table */}
             <div className="overflow-x-auto bg-white shadow-md rounded-lg">
                 <table className="w-full text-sm text-left">
                     <thead className="bg-gray-100 text-gray-600 text-sm">
@@ -223,8 +208,8 @@ export default function OrderList() {
                             <th className="px-4 py-3">Quantity</th>
                             <th className="px-4 py-3">Payment</th>
                             <th className="px-4 py-3">Status</th>
-                            <th className="px-4 py-3">Tracking</th>
-                            <th className="px-4 py-3 text-center">Action</th>
+                            {/* <th className="px-4 py-3">Tracking</th> */}
+                            {/* <th className="px-4 py-3 text-center">Action</th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -259,29 +244,26 @@ export default function OrderList() {
                                     <span
                                         className={`px-2 py-1 rounded-full text-xs font-medium ${p.status.toLowerCase() === "success"
                                             ? "bg-green-100 text-green-700"
-                                            : p.status.toLowerCase() === "pending"
-                                                ? "bg-yellow-100 text-yellow-600"
-                                                : "bg-red-100 text-red-700"
+                                            : "bg-yellow-100 text-yellow-600"
                                             }`}>
                                         {p.status}
                                     </span>
                                 </td>
-                                <td className="px-4 ">
+                                {/* <td className="px-4 ">
                                     <span className="text-blue-600 font-semibold hover:text-blue-800 cursor-pointer">
                                         {p.tracking}
                                     </span>
-                                </td>
-                                <td className="px-4 py-3">
+                                </td> */}
+                                {/* <td className="px-4 py-3">
                                     <div className="flex mr-5 justify-center gap-3 h-full">
                                         <button
-                                            className="text-blue-600 hover:text-blue-800 cursor-pointer">
-                                            {/* // onClick={() => handleView(p)} */}
-                                            <Link to="/orders/detail ">
-                                                <Eye className="w-5 h-5" />
-                                            </Link>
+                                            className="text-red-600 hover:text-red-800 cursor-pointer"
+                                            onClick={() => handleDelete(p.id)}
+                                        >
+                                            <Trash2 className="w-5 h-4" />
                                         </button>
                                     </div>
-                                </td>
+                                </td> */}
                             </tr>
                         ))}
                         {displayedOrders.length === 0 && (
@@ -297,7 +279,7 @@ export default function OrderList() {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div >
     );
 }
 

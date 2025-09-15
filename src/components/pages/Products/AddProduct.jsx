@@ -45,12 +45,23 @@ export default function AddProduct() {
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
-      {/* Header */}
+      {/* Header
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
         <h2 className="text-2xl font-bold">Add Product</h2>
         <div className="text-sm text-gray-500 mt-2 sm:mt-0">
           <span>Products</span> &gt;{" "}
           <span className="text-gray-800 font-medium">Add product</span>
+        </div>
+      </div> */}
+
+       {/* Top Bar */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+        <h1 className="text-3xl font-semibold">Add Product</h1>
+
+        {/* Breadcrumb */}
+        <div className="text-sm text-gray-500 mt-2 sm:mt-0">
+          <span>Orders</span> &gt;{" "}
+          <span className="text-gray-800 font-medium">Add Product</span>
         </div>
       </div>
 
@@ -162,7 +173,7 @@ export default function AddProduct() {
         <div className="bg-white p-6 rounded-lg shadow-md space-y-5">
           {/* Upload Images */}
           <div>
-            <label className="block font-medium text-gray-700 mb-2">
+            <label className="block text-[16px] font-bold mb-2">
               Upload images
             </label>
             <div
