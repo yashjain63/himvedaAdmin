@@ -62,7 +62,7 @@ const OrderTracking = () => {
         <img
           src="/images/protct1.png"
           alt="product"
-          className="w-40 h-40 object-contain rounded-lg border"
+          className="w-40 h-50 object-fill rounded-lg border"
         />
         <div className="flex-1 space-y-2">
           <h2 className="text-lg font-semibold">Baby Oil</h2>

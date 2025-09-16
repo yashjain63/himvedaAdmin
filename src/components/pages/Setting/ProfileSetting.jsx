@@ -190,9 +190,9 @@ export default function ProfileSetting() {
       </div>
 
       {/* Password & Account Section */}
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6"> */}
         {/* Password Section */}
-        <div className="bg-gray-100 p-5 rounded-md flex items-center justify-between">
+        {/* <div className="bg-gray-100 p-5 rounded-md flex items-center justify-between">
           <div>
             <h2 className="font-semibold">Password</h2>
             <p className="text-sm text-gray-600">
@@ -202,10 +202,10 @@ export default function ProfileSetting() {
           <button className="border px-4 py-2 rounded-md hover:bg-gray-200">
             Change
           </button>
-        </div>
+        </div> */}
 
         {/* Remove Account Section */}
-        <div className="bg-gray-100 p-5 rounded-md flex items-center justify-between">
+        {/* <div className="bg-gray-100 p-5 rounded-md flex items-center justify-between">
           <div>
             <h2 className="font-semibold">Remove account</h2>
             <p className="text-sm text-gray-600">
@@ -215,8 +215,8 @@ export default function ProfileSetting() {
           <button className="border px-4 py-2 rounded-md text-red-600 hover:bg-red-100">
             Deactivate
           </button>
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
     </div>
   );
 }

@@ -255,9 +255,7 @@ export default function AddProduct() {
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="w-full border rounded-lg px-3 py-2 text-sm"
-                />
-                <Calendar className="w-5 h-5 text-gray-400 absolute right-3 top-2.5" />
+                  className="w-full border rounded-lg px-3 py-2 text-sm"/>
               </div>
             </div>
           </div>
