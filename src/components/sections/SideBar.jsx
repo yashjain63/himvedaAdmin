@@ -160,7 +160,7 @@ const SidebarLayout = () => {
     if (!menu.children) {
       if (menu.path) navigate(menu.path);
       setExpandedMenu(null);
-      if (isMobile) setIsOpen(false);
+      // if (isMobile) setIsOpen(false);
     } else {
       if (!isOpen && !isMobile) {
         setIsOpen(true);
@@ -175,7 +175,7 @@ const SidebarLayout = () => {
   const handleChildClick = (child) => {
     if (child.path) navigate(child.path);
     setExpandedMenu(null);
-    setIsOpen(false);
+    // setIsOpen(false);
   };
 
   const handleCloseSidebar = () => {
@@ -558,7 +558,7 @@ export default SidebarLayout;
 
 
 
-// put this above it needed here
+// put this above if needed here
 
 // {/* Notification bell */}
 //             <div className="relative" ref={dropdownRef}>
